@@ -33,6 +33,7 @@ header {
     width: 35px;
     left: 210px;
     bottom: 105px;
+    cursor: pointer;
 }
 
 .menu {
@@ -51,6 +52,7 @@ header {
     height: 25px;
     top: -93px;
     left: 177px;
+    cursor: pointer;
 }
 
 .frete {
@@ -377,4 +379,8 @@ footer {
     left: 920px;
     top: 165px;
     font-size: 12px;
+}
+
+.masculino {
+    height: 50px;
 }
