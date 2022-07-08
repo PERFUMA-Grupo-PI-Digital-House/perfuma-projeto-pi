@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
+    align-items: center;
   }
   
   body {
@@ -17,7 +18,7 @@
   .container {
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 5px rgba(132, 13, 122, 0.24);
     width: 400px;
     max-width: 100%;
     overflow: hidden;
