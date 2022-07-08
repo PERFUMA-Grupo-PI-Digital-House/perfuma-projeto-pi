@@ -8,6 +8,7 @@
   body {
     width: 100%;
     min-height: 100vh;
+    background: linear-gradient(90deg, #d1c3d1 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,15 +17,22 @@
   .container {
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.3);
     width: 400px;
     max-width: 100%;
     overflow: hidden;
+  
   }
   
   .header {
     background-color: rgb(163, 91, 199);
-    padding: 20px;
+    border: 2px solid #b573c9;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+
   }
   
   .form {
@@ -66,13 +74,11 @@
   }
   
   .form button {
-    background-color: #d9c2e4;
-    border: 2px solid #6a656a;
-    color: rgb(31, 29, 29);
+    background-color: #b573c9;
+    border: 2px solid #b573c9;
+    color: rgb(249, 242, 242);
     font-size: 14px;
     width: 100%;
     border-radius: 10px;
     padding: 10px;
   }
-  
-  
