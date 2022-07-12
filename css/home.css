@@ -1,386 +1,217 @@
 * {
-    height: 0px;
     margin: 0px;
-    width: max-content;   
+    font-family: "Roboto",sans-serif;
 }
 
 header {
     background-color: #b573c9;
-    width: 100%;
     height: 100px;
-    position:relative;
     color: white;
 }
 
 .logo {
+    padding: 10px;
     position: relative;
-    height: 95px;
-    left: 100px;
-    top: 3px;
+    left: 70px;
+    bottom: 10px;
+}
+
+.menu1 {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 32px;
+    right: 60px;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+}
+
+.menu2{
+    display: flex;
+    justify-content: end;
+    position: relative;
+    bottom: 42px;
+    right: 50px;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+}
+
+.sacola {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    bottom: 130px;
+    right: 60px;
+}
+
+.fretegratis {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    bottom: 105px;
+    right: 50px;
+    font-size: 16px;
 }
 
 .barradepesquisa, .botaodepesquisa {
-    position: relative;
+    display: flex;
+    justify-content: center;
     height: 30px;
     width: 600px;
-    margin-top: 12px;
-    left: 230px;
-    bottom: 100px; 
-}
-
-.botaodepesquisa {
-    height: 36px;
-    width: 35px;
-    left: 210px;
-    bottom: 105px;
-    cursor: pointer;
-}
-
-.menu {
-    
-    font-size: 18px;
-    position:relative;
-    left: 380px;
-    top: -27px;
-    text-decoration: none;
-    color: white;
-    font-family: "Roboto",sans-serif;
-}
-
-.lupa {
-    position:relative;
-    height: 25px;
-    top: -93px;
-    left: 177px;
-    cursor: pointer;
-}
-
-.frete {
     position: relative;
-    font-size: 18px;
-    left: 898px;
-    top: -85px;
-    font-family: "Roboto",sans-serif;
-}
-
-.menu2 {
-    font-size: 18px;
-    position: relative;
-    text-decoration: none;
-    top: -27px;
-    left: 895px;
-    color: white;
-    font-family: "Roboto",sans-serif;
-}
-
-.sacoladecompras {
-    position: relative;
-    height: 40px;
-    left: 1220px;
-    top: -46px;
-}
-
-.banner1 {
-    position: relative;
-    height: 547px;
-    max-width: 2023px;
-}
-
-.categorias {
-    position: relative;
-    top: 600px;
-    font-size: 30px;
-    font-family: "Roboto",sans-serif;
-    font-weight: bold;
-    left: 400px; 
-    color: red;
-}
-
-.categoria1 {
-    position: relative;
-    top: 700px;
-    height: 436px;
+    bottom: 210px;
     left: 200px;
 }
 
-.categoria2 {
-    position:relative;
-    top: 700px;
-    height: 436px;
-    left: 315px;
-}
-
-.categoria3 {
-    position:relative;
-    top: 700px;
-    height: 436px;
-    left: 420px;
-}
-
-.produtosmasculinos {
-    position: relative;
-    top: 1200px;
-    left: 450px; 
-    font-size: 30px;
-    font-family: "Roboto",sans-serif;
-    font-weight: bold;
-    display: flow-root;
-    display: grid;
+.botaodepesquisa {
     display: flex;
-    color: #9204bd;
+    justify-content: center;
+    height: 36px;
+    width: 35px;
+    left:790px;
+    bottom: 246px;
+    cursor: pointer;
 }
 
-.masculino1, .masculino2, .masculino3, .masculino4 {
-    position:relative;
-    height: 400px;
-    width: 250px;
-    background-color: white;
+.lupa {
     display: flex;
-    box-sizing: border-box;
-    float: right;
-    top: 1300px;
-    left: 290px;
-    border: 1px  solid black;
-}
-
-.masculino2 {
+    justify-content: center;
     position: relative;
-    left: px;
-    top: 1300px;
-    left: 210px;
+    bottom: 279px;
+    left: 793px;
 }
 
-.masculino3 {
-    position: relative;
-    left: 130px;
-    top: 1300px;
+.banner1 {
+    display: flex;
+    justify-content: center;
 }
 
-.masculino4 {
-    position: relative;
-    left: 50px;
-    top: 1300px;
+.categoria {
+    font-size: 35px;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 15px;
 }
 
-.produtosfeminino {
-    position:absolute;
-    top: 1861px;
-    left: 460px;
-    font-size: 30px;
-    font-family: "Roboto",sans-serif;
+.imgcategorias {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+.img1 {
+
+    display: inline-block;
+    padding: 20px;
+    font-family: Helvetica, Arial, sans-serif;
+    border: 4px solid black;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.imgscenter {
+    display: flex;
+    justify-content: center;
+}
+
+.valor {
+    font-size: 22px;
     font-weight: bold;
-    color: #9204bd;
-}
-
-
-.feminino1, .feminino2, .feminino3, .feminino4 {
-    position:relative;
-    height: 400px;
-    width: 250px;
-    background-color: white;
-    display: block;
-    box-sizing: border-box;
-    float: right;
-    top: 1480px;
-    left: 290px;
-    border: 1px  solid black;
-}
-
-.feminino2 {
-    position: relative;
-    left: 210px;
-    top: 1480px;
-}
-
-.feminino3 {
-    position: relative;
-    left: 130px;
-    top: 1480px;
-}
-
-.feminino4 {
-    position: relative;
-    left: 50px;
-    top: 1480px;    
-}
-
-
-.produtosinfantil {
-    position:absolute;
-    top: 2431px;
-    left: 495px;
-    font-size: 30px;
-    font-family: "Roboto",sans-serif;
-    font-weight: bold;
-    color: #9204bd;
-}
-
-
-.infantil1, .infantil2, .infantil3, .infantil4 {
-    position:relative;
-    height: 400px;
-    width: 250px;
-    background-color: white;
-    display: block;
-    box-sizing: border-box;
-    float: right;
-    top: 1645px;
-    left: 290px;
-    border: 1px  solid black;
-}
-
-.infantil2 {
-    position: relative;
-    left: 210px;
-    top: 1645px;
-}
-
-.infantil3 {
-    position: relative;
-    left: 130px;
-    top: 1645px;
-}
-
-.infantil4 {
-    position: relative;
-    left: 93px;
-    left: 50px;
-}
-
-footer {
-    position:absolute;
-    background-color: #000000;
-    height: 290px;
-    width: 100%;
-    position:relative;
-    top: 2911px;
-    font-family: "Roboto",sans-serif;
-}
-
-.produtosrodape {
-    position: absolute;
-    left: 35px;
-    top: 15px;
-    font-size: 22px;
-    color: white;
-}
-
-.Perfumes{
-    position: absolute;
-    left: 35px;
-    top: 55px;
-    font-size: 15px;
-    color: white;
-    text-decoration: none;
-}
-
-.centraldeatendimentorodape {
-    position: absolute;
-    left: 220px;
-    top: 15px;
-    font-size: 22px;
-    color: white;
-}
-
-.Atendimento, .MeusPedidos, .FormasdePagamento, .PrazodeEntrega, .PolíticadePrivacidade {
-    position:absolute;
-    left: 220px;
-    top: 55px;
-    font-size: 15px;
-    text-decoration: none;
-    color: white;
-    line-height: 22px;
-}
-
-.MeusPedidos {
-    position: absolute;
-    top: 80px;
-}
-
-.FormasdePagamento {
-    position: absolute;
-    top: 105px;
-}
-
-.PrazodeEntrega {
-    position: absolute;
-    top: 130px;
-}
-
-.PolíticadePrivacidade {
-    position: absolute;
-    top: 155px;
-}
-
-.serviçosrodape{
-    position:absolute;
-    left: 550px;
-    top: 15px;
-    font-size: 22px;
-    text-decoration: none;
-    color: rgb(240, 220, 220);
-    line-height: 22px;
-    z-index: 1;
-}
-
-.RastrearseuPedido  {
-    position:absolute;
-    left: 550px;
-    top: 55px;
-    font-size: 15px;
-    text-decoration: none;
-    color: white;
-    line-height: 22px;
-}
-
-.CupomdeDesconto {
-    position:absolute;
-    left: 550px;
-    top: 80px;
-    font-size: 15px;
-    text-decoration: none;
-    color: white;
-    line-height: 22px;
-}
-
-.formasdepagamentorodate {
-    position: absolute;
-    height: 70px;
-    left: 741px;
-    top: 35px;
-}
-
-.WhatsApp, .instagram, .Facebook{
-    position: absolute;
-    height: 35px;
-    left: 544px;
-    top: 55px;
-    z-index: 1;
-
-
-}
-
-.WhatsApp {
-    left: 1px;
-}
-
-.instagram {
-    left: 75px;
-}
-
-.Facebook {
-    left: 151px; 
-}
-
-.vemficarpertinho {
-    position: absolute;
-    margin: auto;
-    color: white;
-    left: 920px;
-    top: 165px;
-    font-size: 12px;
 }
 
 .masculino {
-    height: 50px;
+    font-size: 35px;
+    color: rgb(177, 16, 16);
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+.feminino {
+    font-size: 35px;
+    color: rgb(177, 16, 16);
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+.infantil {
+    font-size: 35px;
+    color: rgb(177, 16, 16);
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: black;
+    margin-top: 90px;
+    color: white;
+    height: 300px;
+}
+
+.pagamento {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    right: 40px;
+    bottom: 150px;
+}
+
+.redessociais {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    bottom: 55px;
+    right: 180px;
+}
+
+.vem {
+    display: flex;
+    justify-content: end;
+    position: relative;
+    bottom: 50px;
+    left: 200px;
+    font-size: 30px;
+}
+.WhatsApp, .instagram, .Facebook {
+    padding-right: 30px;
+}
+
+.categoriasrodape {
+    display: flex;
+    justify-content: space-around;
+    margin-right: 630px;
+    padding-top: 18px;
+    font-size: 16px;
+}
+
+.itensrodape {
+    display: flex;
+    justify-content: space-around;
+    margin-right: 610px;
+    padding-top: 18px;
+
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.serviçosrodape{
+    position: relative;
+    left: 20px;
+}
+
+.produtosrodape {
+    text-decoration: none;
+}
+
+.rodapetexto {
+    text-decoration: none;
+    color: white;
 }
