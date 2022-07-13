@@ -1,0 +1,31 @@
+{
+  "name": "perfuma-projeto-pi",
+  "version": "1.0.0",
+  "description": "Site desenvolvido para a conclusão do curso Web Full Stack da Digital House",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PERFUMA-Grupo-PI-Digital-House/perfuma-projeto-pi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PERFUMA-Grupo-PI-Digital-House/perfuma-projeto-pi/issues"
+  },
+  "homepage": "https://github.com/PERFUMA-Grupo-PI-Digital-House/perfuma-projeto-pi#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "method-override": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
