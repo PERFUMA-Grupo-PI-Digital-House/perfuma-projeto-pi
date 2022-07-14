@@ -13,7 +13,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../img/perfuma-login.jpg');
+    background-image: url('../img/fundo-tela-login.jpg');
+    background-size: cover;
   }
   
   .container {
