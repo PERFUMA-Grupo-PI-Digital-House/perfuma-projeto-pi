@@ -1,0 +1,165 @@
+html {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+    width: 95%;
+    margin: 0 auto;
+    min-height: 100vh;
+    max-width: 100%;
+}
+
+main {
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100vh;
+    max-width: 100%;
+    background-color: rgba(250, 244, 236, 0.685);
+}
+
+.containerPai {
+    color: black;
+    padding-top: 20px;
+}
+
+.container-principal {
+    padding-top: 30px;
+    display: flex;
+}
+
+.container-esquerdo {
+    display: flex;
+    flex-direction: column;
+    height: 180px;
+    width: 180px;
+}
+
+.imagens-menor1 {
+    margin: 2px;
+    border: 2px rgba(104, 22, 22, 0.404) dotted ;
+    border-radius: 10px;   
+}
+
+.imagens-menor1:hover {
+    background-color: #E70D91;;
+}
+
+.imagem-maior {
+    display: flex;
+    flex-direction: column;
+    height: 530px;
+    width: 530px;
+    margin-left: 5px;
+    border: 1px rgba(0, 0, 0, 0.158) solid ;
+    border-radius: 1px;
+}
+
+.container-direito {
+
+    display: block;
+    justify-content: end;
+    margin-left: 50px;
+    width: 100vh;
+    border: 1px rgba(0, 0, 0, 0.137) solid ;
+    border-radius: 10px;
+}
+
+.container-direito h1 {
+    display: flex;
+    justify-content: start;
+    padding-left: 45px;
+    font-size: 35px;
+}
+
+.container-direito ul {
+    line-height: 12px;
+    font-size: 22px;
+    padding-left: 50px;
+}
+
+.btn-comprar button {
+    background-color: blueviolet;
+    color: white;
+    font-weight: bolder;
+    border: 1px solid;
+    border-radius: 4px;
+    width: 50%;
+    height: 4rem;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.btn-comprar {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.btn-comprar .calcular {
+    color: black;
+    width: 30%;
+    height: 4rem;
+    font-size: 20px;
+    background-color: white;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.comprar:hover {
+    background-color: rgb(4, 219, 15);
+}
+
+ .calcular:hover {
+    background-color: rgb(164, 180, 165);
+}
+
+.desconto {
+    
+    font-size: 15px;
+    border: 1px blueviolet solid;
+    margin: 50px;
+    width: 75%;
+    padding: 10px;
+}
+
+.container-secundario {
+    color: black;
+}
+
+.container-secundario {
+    display: flex;
+}
+
+.descricao {
+    display: flex;
+    justify-content: center;
+    padding-top: 150px;
+}
+.descricao1 {
+    margin: 25px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid;
+    border-radius: 5px; 
+}
+
+
+.descricao2 {
+    margin: 25px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid;
+    border-radius: 5px; 
+}
+
+.ultimo-container {
+    margin: 25px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.ultimo-container h1 {
+    font-size: 18px;
+}
