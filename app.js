@@ -1,4 +1,4 @@
-  const express = require("express");
+const express = require("express");
 const app = express();
 const port = 3000;
 const methodOverride = require("method-override");
@@ -6,6 +6,8 @@ const path = require("path");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 
+const indexRoute = require("./src/routers/indexRouter");
+const productRoute = require("./src/routers/productRoute");
 
 // Configura o methodOverride no express
 // methodOverride = Pacote que transforma um método http em outro
@@ -31,6 +33,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "src", "views"));
 
 
+app.use("/", indexRoute);
+app.use("/product", productRoute);
 
 // Inicia o servidor
 app.listen(port, () => {
