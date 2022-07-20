@@ -7,6 +7,8 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 
 const homeRoute = require("./src/routes/homeRoute");
+const painelUsuario = require("./src/routes/painelUsuario");
+const produtoADM = require("./src/routes/produtoADM");
 
 
 // Configura o methodOverride no express
@@ -34,6 +36,10 @@ app.set("views", path.join(__dirname, "src", "views"));
 
 
 app.use("/", homeRoute);
+
+app.use("/", painelUsuario);
+
+app.use("/", produtoADM);
 
 // Inicia o servidor
 app.listen(port, () => {
