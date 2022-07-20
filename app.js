@@ -1,10 +1,12 @@
-  const express = require("express");
+const express = require("express");
 const app = express();
 const port = 3000;
 const methodOverride = require("method-override");
 const path = require("path");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+
+const homeRoute = require("./src/routes/homeRoute");
 
 
 // Configura o methodOverride no express
@@ -31,6 +33,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "src", "views"));
 
 
+app.use("/", homeRoute);
 
 // Inicia o servidor
 app.listen(port, () => {
