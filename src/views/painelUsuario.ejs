@@ -1,123 +1,111 @@
-<!DOCTYPE html>
-<html lang="pt-Br">
+<%- include("./partials/head") %>
+    <%- include("./partials/header") %>
+        <main>
+            <div class="container-principal-PainelUsuario">
+                <div class="container-lateral-PainelUsuario">
+                    <div class="usuario">
+                        <img src="/img/do-utilizador.png" alt="">
+                        <h1>Vinicius Gonçalves</h1>
+                    </div>
+                    <div class="creditos">
+                        <ul>
+                            <h3>Créditos</h3>
+                            <li><span>Total</span><span>R$ 0,00</span></li>
+                        </ul>
+                    </div>
+                    <div class="notificacoes">
+                        <h3>Notificações</h3>
+                        <div class="caixa1">
+                            <span>NewSletter</span>
+                            <label class="switch" for="checkbox">
+                                <span class="switch-text">Ativo</span>
+                                <div class="switch-wrapper">
+                                    <input type="checkbox" name="" id="">
+                                    <span class="switch-button"></span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="caixa2">
+                            <span>Perguntas e Respostas</span>
+                            <label class="switch" for="checkbox">
+                                <span class="switch-text">Ativo</span>
+                                <div class="switch-wrapper">
+                                    <input type="checkbox" name="" id="">
+                                    <span class="switch-button"></span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="btn-menus">
+                        <button>Meu Cadastro</button>
+                        <button>Pedidos</button>
+                        <button>Minhas avaliações</button>
+                        <button>Protocolos</button>
+                        <button>Sorteios</button>
+                        <button>Arrependimento</button>
+                        <button>Garantia</button>
+                    </div>
+                    <div class="atendimento-cliente">
+                        <h3>Atendimento ao cliente</h3>
+                        <h5>Central SAC: (19) 2124 4444</h5>
+                        <h5>E-mail: faleconosco@prefuma.com.br</h5>
+                        <a href="#">Atendimento via chat</a>
+                    </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %> </title>
-    <link rel="stylesheet" href="/public/css/painelUsuario.css">
-</head>
-
-<body>
-    <main>
-        <div class="container-principal">
-            <div class="container-lateral">
-                <div class="usuario">
-                    <img src="/public/img/do-utilizador.png" alt="">
-                    <h1>Vinicius Gonçalves</h1>
                 </div>
-                <div class="creditos">
-                    <ul>
-                        <h3>Créditos</h3>
-                        <li><span>Total</span><span>R$ 0,00</span></li>
-                    </ul>
-                </div>
-                <div class="notificacoes">
-                    <h3>Notificações</h3>
-                    <div class="caixa1">
-                        <span>NewSletter</span>
-                        <label class="switch" for="checkbox">
-                            <span class="switch-text">Ativo</span>
-                            <div class="switch-wrapper">
-                                <input type="checkbox" name="" id="">
-                                <span class="switch-button"></span>
-                            </div>
-                        </label>
+                <div class="container-central">
+                    <div class="info-carrinho">
+                        <div class="informacao">
+                            <h1>Minha conta</h1>
+                            <h5>Administre seus dados, endereços e pedidos.</h5>
+                            <span>Se houver duvida, entre em contato com nossa central de atendimento.</span>
+                        </div>
+                        <div class="carrinho-compras">
+                            <img src="/img/logo perfuma.png" alt="">
+                            <button>Perfuma</button>
+                        </div>
                     </div>
-                    <div class="caixa2">
-                        <span>Perguntas e Respostas</span>
-                        <label class="switch" for="checkbox">
-                            <span class="switch-text">Ativo</span>
-                            <div class="switch-wrapper">
-                                <input type="checkbox" name="" id="">
-                                <span class="switch-button"></span>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-                <div class="btn-menus">
-                    <button>Meu Cadastro</button>
-                    <button>Pedidos</button>
-                    <button>Minhas avaliações</button>
-                    <button>Protocolos</button>
-                    <button>Sorteios</button>
-                    <button>Arrependimento</button>
-                    <button>Garantia</button>
-                </div>
-                <div class="atendimento-cliente">
-                    <h3>Atendimento ao cliente</h3>
-                    <h5>Central SAC: (19) 2124 4444</h5>
-                    <h5>E-mail: faleconosco@prefuma.com.br</h5>
-                    <a href="#">Atendimento via chat</a>
-                </div>
-
-            </div>
-            <div class="container-central">
-                <div class="info-carrinho">
-                    <div class="informacao">
-                        <h1>Minha conta</h1>
-                        <h5>Administre seus dados, endereços e pedidos.</h5>
-                        <span>Se houver duvida, entre em contato com nossa central de atendimento.</span>
-                    </div>
-                    <div class="carrinho-compras">
-                        <img src="/public/img/logo perfuma.png" alt="">
-                        <button>Perfuma</button>
-                    </div>
-                </div>
-                <div class="meus-pedidos">
-                    <h2>Meus Pedidos</h2>
-                    <span>Aqui você encontra todas as informações do seu pedido.</span>
-                    <div class="table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Número do pedidos</th>
-                                    <th>Data</th>
-                                    <th>Pagamento</th>
-                                    <th>Posição</th>
-                                    <th>NF-e</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>7677412</td>
-                                    <td>17/06/2022</td>
-                                    <td>Cartão de Crédito</td>
-                                    <td>Enviado</td>
-                                    <td><img src="/public/img/file.png" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>7677412</td>
-                                    <td>17/06/2022</td>
-                                    <td>Cartão de Crédito</td>
-                                    <td>Enviado</td>
-                                    <td><img src="/public/img/file.png" alt=""></td>
-                                </tr>
-                                <tr>
-                                    <td>7677412</td>
-                                    <td>17/06/2022</td>
-                                    <td>Cartão de Crédito</td>
-                                    <td>Enviado</td>
-                                    <td><img src="/public/img/file.png" alt=""></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="meus-pedidos">
+                        <h2>Meus Pedidos</h2>
+                        <span>Aqui você encontra todas as informações do seu pedido.</span>
+                        <div class="table">
+                            <table class="table-PainelUsuario">
+                                <thead class="th-PainelUsuario">
+                                    <tr>
+                                        <th>Número do pedidos</th>
+                                        <th>Data</th>
+                                        <th>Pagamento</th>
+                                        <th>Posição</th>
+                                        <th>NF-e</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tb-PainelUsuario">
+                                    <tr>
+                                        <td>7677412</td>
+                                        <td>17/06/2022</td>
+                                        <td>Cartão de Crédito</td>
+                                        <td>Enviado</td>
+                                        <td><img src="/img/file.png" alt=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>7677412</td>
+                                        <td>17/06/2022</td>
+                                        <td>Cartão de Crédito</td>
+                                        <td>Enviado</td>
+                                        <td><img src="/img/file.png" alt=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>7677412</td>
+                                        <td>17/06/2022</td>
+                                        <td>Cartão de Crédito</td>
+                                        <td>Enviado</td>
+                                        <td><img src="/img/file.png" alt=""></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-</body>
-
-</html>
+        </main>
+        <%- include("./partials/footer") %>

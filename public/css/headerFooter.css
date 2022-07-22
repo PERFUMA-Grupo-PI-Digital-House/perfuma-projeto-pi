@@ -27,6 +27,10 @@ body {
     max-width: 100%;
 }
 
+header{
+    margin-bottom: 5px;
+}
+
 /* Barra de navegação
 ---------------------------------*/
 
@@ -78,8 +82,8 @@ input[type='search'] {
 }
 
 input[type='search']:focus {
-    border-color: dodgerblue;
-    box-shadow: 0 0 8px 0 dodgerblue;
+    border-color: rgb(146, 70, 169);
+    box-shadow: 0 0 8px 0 rgb(146, 70, 169);
 }
 
 .container-search {
@@ -255,61 +259,6 @@ input[type='search']:focus {
     color: black;
 }
 
-/* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
-
-
-    .container-logo-pesquisa h3 {
-        display: none;
-    }
-
-    .menu a {
-        display: none;
-    }
-
-    .menu {
-        justify-content: flex-start;
-    }
-
-    .footer {
-        flex-direction: column;
-    }
-
-    .menu-footer {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .menu-footer a {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .container-footer-pg-redesSociais {
-        width: 100%;
-    }
-
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (max-width: 991.98px) {
-
-    .container-logo-pesquisa h3 {
-        display: none;
-    }
-
-    .menu a {
-        display: none;
-    }
-
-    .menu {
-        justify-content: flex-start;
-    }
-
-    .container-redes-sociais {
-        flex-direction: column;
-    }
-
-}
 
 
 
@@ -325,7 +274,7 @@ CSS A BAIXO É DA HOME */
 
 * {
     margin: 0px;
-    font-family: "Roboto",sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .banner1 {
@@ -392,4 +341,539 @@ CSS A BAIXO É DA HOME */
     justify-content: center;
     margin-top: 80px;
     margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Css Página Adminstrador Produto */
+
+#container-principal {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(158, 137, 161, 0.311);
+}
+
+.container-lateral {
+    width: 20%;
+    height: 100%;
+    padding: 20px;
+    background-color: rgba(158, 137, 161, 0.311);
+    color: #a12ec4;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.titulo {
+    font-size: 2rem;
+    margin: 10px 0 40px;
+    color: #a12ec4;
+    font-weight: bolder;
+
+}
+
+.btn-menus {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-menus button {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 2rem;
+    text-transform: uppercase;
+    border-radius: 10px;
+    color: #a12ec4;
+    font-weight: bolder;
+    cursor: pointer;
+    border-color: #a12ec4;
+    background-color: rgba(134, 84, 149, 0.456);
+
+
+    width: 100%;
+    Display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.container-lateral ul li {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #783a8d;
+    color: #a12ec4;
+    cursor: pointer;
+    max-width: 100%;
+}
+
+.container-central {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+.container-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    margin: 0 10px 10px;
+}
+
+.container-header img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    color: #a12ec4;
+    font-weight: bolder;
+}
+
+.container-menu-adminstrador ul {
+    display: flex;
+    flex-direction: row;
+    color: #a12ec4;
+    font-weight: bolder;
+}
+
+.container-menu-adminstrador ul li {
+    padding-right: 30px;
+}
+
+.caminho {
+    display: flex;
+    flex-direction: row;
+    margin: 0 10px;
+    background-color: #a12ec4;
+    border-radius: 4px;
+    color: aliceblue;
+    font-weight: bolder;
+}
+
+.caminho p {
+    padding: 10px;
+}
+
+.usuario-adicionar-produto {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 0 0 0 10px;
+    color: #783a8d;
+}
+
+.usuario-adicionar-produto button {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #783a8d;
+    border-color: #783a8d;
+}
+
+.usuario-adicionar-produto button img {
+    width: 20px;
+    margin: 5px;
+}
+
+.div-table {
+    margin: 0 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+table {
+    text-align: left;
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: #a12ec4;
+}
+
+.table {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 10px 10px;
+    color: #a12ec4;
+    font-weight: bolder;
+}
+
+.table div input[type="search"] {
+    width: 200px;
+}
+
+.table div input[type="number"] {
+    width: 40px;
+    height: 5vh;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+}
+
+table tr th {
+    background-color: #a12ec4;
+    color: aliceblue;
+    font-weight: bolder;
+}
+
+table tr th,
+td {
+    padding: 10px;
+}
+
+table tr td button img {
+    width: 20px;
+    height: 15px;
+    cursor: pointer;
+}
+
+.cinzamenu {
+    background-color: #a12ec4;
+    color: aliceblue;
+}
+
+.cinza {
+    background-color: #eee;
+    color: #a12ec4;
+    border-color: #783a8d;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Css Página Painel de usuário */
+
+
+.container-principal-PainelUsuario {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    background-color: #c2b2c710;
+
+
+}
+
+.container-lateral-PainelUsuario {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgba(158, 137, 161, 0.311);
+    padding: 10px;
+}
+
+.usuario img {
+    width: 100px;
+}
+
+.usuario h1, .informacao h1, .meus-pedidos h2 {
+    font-weight: bolder;
+    color: #a12ec4;
+}
+
+.creditos,
+.notificacoes {
+    width: 100%;
+    border: 1px solid rgba(66, 6, 71, 0.288);
+    border-radius: 5px;
+    margin: 10px 0;
+    color:rgb(249, 249, 249)
+}
+
+.creditos ul h3,
+.notificacoes h3 {
+    padding: 3px;
+    font-size: 1.2rem;
+    background-color: rgb(146, 70, 169);
+    font-weight: 600;
+}
+
+.creditos ul li,
+.caixa1,
+.caixa2 {
+    background-color: rgba(134, 84, 149, 0.456);
+    padding: 3px;
+    color: rgba(72, 21, 88);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+}
+
+.switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.switch .switch-text {
+    padding-right: 0.3rem;
+}
+
+.switch .switch-wrapper {
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    position: relative;
+}
+
+.switch .switch-wrapper .switch-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 40px;
+    background-color: #a12ec489;
+}
+
+.switch .switch-wrapper input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch .switch-wrapper .switch-button::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    border-radius: 50%;
+    transition: .4s all ease;
+    background-color: aliceblue;
+}
+
+.switch .switch-wrapper input:checked + .switch-button {
+    background-color: #58A721;
+}
+
+.switch .switch-wrapper input:checked + .switch-button::before {
+    transform: translateX(26px);
+}
+
+.btn-menus {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-menus button {
+    margin-bottom: 10px;
+    width: 100%;
+    height: 2rem;
+    text-transform: uppercase;
+    border-radius: 5px;
+    color: rgba(72, 21, 88);
+    font-weight: bolder;
+    cursor: pointer;
+    border-color: #a12ec4;
+    background-color: rgba(134, 84, 149, 0.456);
+}
+
+.btn-menus button:hover {
+    color: rgba(134, 84, 149, 0.456);
+
+}
+
+.atendimento-cliente h3 {
+    padding: 3px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(72, 21, 88);
+
+}
+
+.atendimento-cliente h5{
+    padding: 3px;
+    color: rgba(72, 21, 88);
+}
+
+.atendimento-cliente a {
+    display: block;
+    margin: 15px 0 0 3px;
+    color: rgba(72, 21, 88);
+}
+
+.atendimento-cliente a:hover {
+    color: rgba(123, 127, 133, 0.7);
+}
+
+.container-central{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), white);
+}
+
+.info-carrinho{
+    display: flex;
+    margin: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(72, 21, 88);
+}
+
+.informacao h5{
+    font-weight: 600;
+    color: rgba(72, 21, 88);
+    
+}
+
+.informacao span, .meus-pedidos span{
+    color: rgba(72, 21, 88);
+}
+
+.carrinho-compras{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(124, 41, 151);
+    
+}
+
+.carrinho-compras img{
+    width: 100px;
+}
+
+.table td img{
+    width: 20px;
+}
+
+.meus-pedidos{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color:rgba(72, 21, 88)
+   
+}
+
+.meus-pedidos span, .meus-pedidos h2{
+    margin-left: 20px;
+}
+
+.table-PainelUsuario{
+    width: 100%;
+    border: 2px solid #650d80f4;
+    border-radius: 10px;
+    background-color: #9c60ae25;
+}
+
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.th-PainelUsuario tr th{
+    text-align: center;
+    background-color: rgba(194, 178, 199);
+}
+
+.tb-PainelUsuario tr td{
+    text-align: center;
+    background-color: rgba(194, 178, 199, 0.4);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Css Página finalizar compra */
+
+
+.Finalizar {
+    margin: 0 auto;
+    width: 70%;
+    min-height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #a12ec4;
+}
+
+.Finalizar div h1 {
+}
+
+.container-form{
+    width: 50%;
+    padding: 10px;
+    
+}
+
+.input-duplo input, .input-simples input{
+    width: 100%;
+    height: 30px;
+    border-radius: 4px;
+    border: none;
+    margin-bottom: 10px;
+    background-color: rgb(161, 46, 196, 0.1);
+}
+
+.opt-envio{
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.radio{
+    margin-right: 20px;
+}
+
+.btn-compras{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+.btn-compras button{
+    width: 70%;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    color: #a12ec4;
+    background-color: rgb(161, 46, 196, 0.1);
+    
 }
