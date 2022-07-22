@@ -882,3 +882,58 @@ table tr td button img {
     background-color: rgb(161, 46, 196, 0.1);
     
 }
+
+
+
+
+/* -compra finalizada - */
+
+
+.bodyp1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.mainp1 {
+    border: 1px solid black;
+    height:80vh;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+}
+
+.imagem-pedido-finalizado {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.text {
+    font-family: "Roboto",sans-serif;
+}
+
+.p1 {
+    font-size: 35px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+.p2, .p3 {
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.botoes {
+    display: flex;
+    justify-content: center;
+}
+
+.Pagina-inicial, .Lista-de-Produtos {
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
