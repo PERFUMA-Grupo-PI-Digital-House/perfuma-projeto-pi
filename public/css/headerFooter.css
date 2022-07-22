@@ -344,13 +344,12 @@ CSS A BAIXO É DA HOME */
 
 
 
-<<<<<<< HEAD
+
 /* -----------------------------------------------------------------------------------------------
 A BAIXO ESTA A PAGINA DE COMPRA FINALIZADA */
 
 
 
-=======
 
 
 
@@ -841,6 +840,7 @@ table tr td button img {
 }
 
 .Finalizar div h1 {
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .container-form{
@@ -882,4 +882,3 @@ table tr td button img {
     background-color: rgb(161, 46, 196, 0.1);
     
 }
->>>>>>> 9f5550f734261aa99615cd86f275ea2178a6d44c
