@@ -1,0 +1,69 @@
+<%- include("./partials/head") %> 
+<%- include("./partials/header") %>
+
+    <link rel="stylesheet" href="/public/css/finalizarCompra.css">
+</head>
+<body>
+ 
+      <form action="url_para_enviar_dados_do_formulario" method="post">
+          <fieldset>
+            <div class="Finalizar">
+            <div>
+                <h1>Finalizar compra</h1>
+                <br/>
+                <h2>Endereço para entrega</h2>
+                <br/>
+            </div>
+
+              <div class="input-duplo">
+                  <div>
+                      <label for="nome">Nome: <span>*</span></label>
+                      <input type="text" name="nome" id="nome" required>
+                  </div>
+                  <div>
+                      <label for="sobrenome">Sobrenome: <span>*</span></label>
+                      <input type="text" name="sobrenome" id="sobrenome" required>
+                  </div>
+              </div>
+              <div class="input-simples">
+                  <div>
+                      <label for="endereco">Endereço: <span>*</span></label>
+                      <input type="text" name="endereco" id="endereco" required>
+                  </div>
+              </div>
+              <div class="input-duplo">
+                  <div>
+                      <label for="cep">CEP: <span>*</span></label>
+                      <input type="text" name="cep" id="cep" required>
+                  </div>
+                  <div>
+                      <label for="pais">País</label>
+                      <div class="select-wrapper">
+                          <select name="pais" id="pais">
+                              <option value="angola">Angola</option>
+                              <option value="brasil">Brasil</option>
+                              <option value="portugal">Portugal</option>
+                              <option value="timor-leste">Timor-Leste</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+              <br/>
+              <br/>
+              <h2>Opção de envio</h2>
+
+              <div class="radio">
+                  <input type="radio" name="opcao-envio" id="normal" value="normal">
+                  <label for="normal">Normal</label>
+              </div>
+              <div class="radio">
+                  <input type="radio" name="opcao-envio" id="expresso" value="expresso">
+                  <label for="expresso">Expresso</label>
+              </div>
+              <br/>
+              <button type="submit">Enviar</button>
+          </fieldset>
+      </form>
+  </body>
+  </html>
+  <%- include("./partials/footer") %>

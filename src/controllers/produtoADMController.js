@@ -1,6 +1,6 @@
-const produtoADM = {
+const produtoADMController = {
     produtoADM: (req, res) => {
       return res.render("produtoADM", {title: "produtoADM"});
     },
   };
-  module.exports = produtoADM;
+  module.exports = produtoADMController;
