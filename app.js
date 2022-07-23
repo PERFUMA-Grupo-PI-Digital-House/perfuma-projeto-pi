@@ -9,6 +9,8 @@ const cookieParser = require("cookie-parser");
 const homeRoute = require("./src/routes/homeRoute");
 const painelUsuario = require("./src/routes/painelUsuario");
 const produtoADM = require("./src/routes/produtoADM");
+const finalizarCompra = require("./src/routes/finalizarCompra");
+const compra_finalizada = require("./src/routes/compra_finalizada");
 
 
 // Configura o methodOverride no express
@@ -37,9 +39,13 @@ app.set("views", path.join(__dirname, "src", "views"));
 
 app.use("/", homeRoute);
 
-app.use("/", painelUsuario);
+app.use("/painelUsuario", painelUsuario);
 
-app.use("/", produtoADM);
+app.use("/produtoADM", produtoADM);
+
+app.use("/finalizarCompra", finalizarCompra);
+
+app.use("/compra_finalizada", compra_finalizada);
 
 // Inicia o servidor
 app.listen(port, () => {
