@@ -17,7 +17,6 @@ Site desenvolvido para a conclusão do curso Web Full Stack da Digital House
 <table>
   <tr>
     <td align="center"><a href="https://github.com/LeozinhoPortoM"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/103224002?v=4" width="100px;" alt=""/><br /><sub><b>Léo Porto</b></sub></a><br />🚀</td>
-    <td align="center"><a href="https://github.com/victor-dev-00"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/73140945?v=4" width="100px;" alt=""/><br /><sub><b>Victor</b></sub></a><br />🚀</td>
     <td align="center"><a href="https://github.com/paranoid4ndro1d"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/100387118?v=4" width="100px;" alt=""/><br /><sub><b>Márcio Morais</b></sub></a><br />🚀</td>
     <td align="center"><a href="https://github.com/ValquiriaTrigo"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/103223805?v=4" width="100px;" alt=""/><br /><sub><b>Valquiria Trigo</b></sub></a><br />🚀</td>
     <td align="center"><a href="https://github.com/GabriellShi"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/103224074?v=4" width="100px;" alt=""/><br /><sub><b>Gabriel Oliveira</b></sub></a><br />🚀</td>
