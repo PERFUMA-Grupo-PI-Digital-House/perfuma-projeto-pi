@@ -939,7 +939,14 @@ table tr td button img {
 /* ----------------------------------------- */
 /* painel de usuario - criar conta */
 
-
+/* * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    align-items: center;
+  } */
+  
   
   .body-criar-conta-usuario {
     width: 100%;
@@ -1019,4 +1026,144 @@ table tr td button img {
     width: 100%;
     border-radius: 10px;
     padding: 10px;
+  }
+
+
+
+
+
+  /* -----------------------------------------
+  login */
+/* 
+  * {
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    align-items: center;
+
+  } */
+
+  
+
+  .body-login {
+
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #d1c3d1 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/fundo-tela-login.jpg');
+    background-size: cover;
+
+  }
+
+  
+
+  .container {
+
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(132, 13, 122, 0.24);
+    width: 400px;
+    max-width: 100%;
+    overflow: hidden;
+
+
+  }
+  
+
+  .header {
+
+    background-color: rgb(163, 91, 199);
+    border: 2px solid #b573c9;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+
+  }
+
+  h2 {
+    color: #ffffff;
+  }
+
+  
+
+  .form {
+
+    padding: 20px;
+
+  }
+
+  
+
+  .form-control {
+
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+
+  }
+
+  
+
+  .form-control label {
+
+    display: inline-block;
+    margin-bottom: 5px;
+
+  }
+
+  
+
+  .form-control input {
+
+    border: 2px solid #d8cccc;
+    display: block;
+    border-radius: 10px;
+    font-size: 14px;
+    width: 100%;
+    padding: 10px;
+
+  }
+
+  
+
+  .form-control i {
+
+    position: absolute;
+    top: 45px;
+    right: 10px;
+    visibility: hidden;
+
+  }
+
+  
+
+  .form-control small {
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+
+  }
+
+  
+
+  .form button {
+
+    background-color: #d9c2e4;
+    border: 2px solid #6a656a;
+    color: rgb(31, 29, 29);
+    font-size: 14px;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+
+
   }

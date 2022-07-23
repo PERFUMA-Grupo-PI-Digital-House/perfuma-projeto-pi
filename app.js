@@ -12,6 +12,7 @@ const produtoADM = require("./src/routes/produtoADM");
 const finalizarCompra = require("./src/routes/finalizarCompra");
 const compra_finalizada = require("./src/routes/compra_finalizada");
 const painel_usuario_criar_conta = require("./src/routes/painel_usuario_criar_conta.js");
+const loginRoute = require("./src/routes/loginRoute");
 
 
 // Configura o methodOverride no express
@@ -49,6 +50,8 @@ app.use("/finalizarCompra", finalizarCompra);
 app.use("/compra_finalizada", compra_finalizada);
 
 app.use("/painel_usuario_criar_conta", painel_usuario_criar_conta);
+
+app.use("/login", loginRoute);
 
 // Inicia o servidor
 app.listen(port, () => {
