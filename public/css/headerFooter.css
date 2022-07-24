@@ -272,11 +272,6 @@ CSS A BAIXO É DA HOME */
 
 
 
-* {
-    margin: 0px;
-    font-family: "Roboto", sans-serif;
-}
-
 .banner1 {
     display: flex;
     justify-content: center;
@@ -833,9 +828,6 @@ table tr td button img {
     justify-content: center;
     align-items: center;
     color: #a12ec4;
-}
-
-.Finalizar div h1 {
 }
 
 .container-form{
