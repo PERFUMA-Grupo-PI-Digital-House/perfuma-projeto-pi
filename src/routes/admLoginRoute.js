@@ -4,6 +4,6 @@ const router = express.Router();
 const admLoginController = require("../controllers/admLoginController");
 
 
-router.get("/", admLoginController.admLogin);
+router.get("/", admLoginController.adm_login);
 
 module.exports = router;
