@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const AdmLoginController = require("../controllers/AdmLoginController");
+const admLoginController = require("../controllers/admLoginController");
 
 
-router.get("/", AdmLoginController.adm_login);
+router.get("/", admLoginController.admLogin);
 
 module.exports = router;

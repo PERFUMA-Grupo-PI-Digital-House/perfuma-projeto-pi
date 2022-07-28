@@ -53,6 +53,7 @@ app.use("/compraFinalizada", compraFinalizadaRoute);
 app.use("/usuario", usuarioRoute);
 
 app.use("/login", loginRoute);
+
 app.use("/admLogin", admLoginRoute);
 
 
