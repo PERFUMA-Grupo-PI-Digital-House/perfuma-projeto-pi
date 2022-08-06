@@ -1,0 +1,34 @@
+<%- include("./partials/head") %>
+    <%- include("./partials/header") %>
+        <main id="container">
+            <h1>Bem vindo ao painel administrativo</h1>
+            <h2>Atualizar usuário</h2>
+            <% if(locals.error){ %>
+                <h2 class="error-alert">
+                    <%= error.message %>
+                </h2>
+                <% } %>
+                    <form action="/user/edit/<%= user.id %>?_method=put" method="post" enctype="multipart/form-data">
+                        <label for="nome">Nome</label>
+                        <input value="<%= user.nome %>" type="text" name="nome" />
+                        
+                        <label for="sobrenome">Sobrenome</label>
+                        <input value="<%= user.sobrenome %>" type="text" name="sobrenome" />
+
+                        <label for="email">E-mail</label>
+                        <input value="<%= user.email %>" type="email" name="email" />
+
+                        <label for="senha">Senha</label>
+                        <input value="<%= user.senha %>" type="password" name="senha" />
+
+                        <label for="confirmar_senha">Confirmar senha</label>
+                        <input value="<%= user.confirmar_senha %>" type="password" name="confirmar_senha" />
+
+                        <label for="avatar">Avatar</label>
+                        <input type="file" name="avatar"
+                            placeholder="Número do Avatar" />
+
+                        <button type="submit">Atualizar</button>
+                    </form>
+        </main>
+        <%- include("./partials/footer") %>

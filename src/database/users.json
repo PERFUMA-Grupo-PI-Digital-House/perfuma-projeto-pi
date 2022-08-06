@@ -1,0 +1,36 @@
+[
+ {
+  "id": 1,
+  "nome": "Léo",
+  "sobrenome": "Porto Mararanhão",
+  "email": "leo.porto.lpm@hotmail.com",
+  "senha": "$2b$10$U5EVw0lU/5zwW1BFs1OBgeV6mXogSN9dp2MCk/Th6v11tPNJ3v9vu",
+  "avatar": "0cbeedc17be5ce8ca475.jpg",
+  "admin": true,
+  "ativo": true,
+  "criadoEm": "2022-07-17T00:21:39.368Z",
+  "modificadoEm": "2022-07-19T23:51:31.157Z"
+ },
+ {
+  "id": 2,
+  "nome": "Maria",
+  "sobrenome": "Dolores",
+  "email": "maria@hotmail.com",
+  "senha": "$2b$10$RSkGXSI4VNsqRWgDO8YuVugKhKHkNJ6skM3AGmeS.kT/GPWZYGSEC",
+  "avatar": "4f2ab71c552fee89b161.jpg",
+  "admin": false,
+  "ativo": true,
+  "criadoEm": "2022-07-17T00:24:48.004Z",
+  "modificadoEm": "2022-07-17T00:24:48.004Z"
+ },
+ {
+  "id": 3,
+  "nome": "Antonio",
+  "senha": "$2b$10$7AyswpEdbD4CMchHOqqdC.kxhi1MhIPN21b5JMh5HT5241JiaDjPq",
+  "email": "antonio@hotmail.com",
+  "admin": false,
+  "ativo": true,
+  "criadoEm": "2022-08-06T19:16:45.827Z",
+  "modificadoEm": "2022-08-06T19:16:45.827Z"
+ }
+]

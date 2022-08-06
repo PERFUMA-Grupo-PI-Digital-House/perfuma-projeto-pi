@@ -1,0 +1,59 @@
+<%- include("./partials/head") %>
+
+  <body class="body-criar-conta-usuario">
+    <div class="container">
+      <div class="header">
+        <h2>Criar Uma Conta</h2>
+      </div>
+
+      <form action="/register" method="post" id="form" class="form" >
+        <div class="form-control">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" value="<%= locals.old ? old.nome : null %>" />
+          <% if(locals.errors && errors.nome){ %>
+            <div class="error-alert">
+              <%= errors.nome.msg %>
+            </div>
+            <% } %>
+
+        </div>
+
+        <div class="form-control">
+          <label for="email">E-mail</label>
+          <input type="text" id="email" name="email" value="<%= locals.old ? old.email : null %>" />
+          <% if(locals.errors && errors.email){ %>
+            <div class="error-alert">
+              <%= errors.email.msg %>
+            </div>
+            <% } %>
+        </div>
+
+        <div class="form-control">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" value="<%= locals.old ? old.senha : null %>" />
+          <% if(locals.errors && errors.senha){ %>
+            <div class="error-alert">
+              <%= errors.senha.msg %>
+            </div>
+            <% } %>
+        </div>
+
+
+        <div class="form-control">
+          <label for="confirmar_senha">Confirmação de senha</label>
+          <input type="password" id="confirmar_senha" name="confirmar_senha" value="<%= locals.old ? old.confirmar_senha : null %>" />
+          <% if(locals.errors && errors.confirmar_senha){ %>
+            <div class="error-alert">
+              <%= errors.confirmar_senha.msg %>
+            </div>
+            <% } %>
+        </div>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+
+
+  </body>
+
+  </html>

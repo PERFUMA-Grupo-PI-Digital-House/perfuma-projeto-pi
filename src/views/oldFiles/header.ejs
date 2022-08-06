@@ -1,0 +1,50 @@
+<header>
+    <div id="container-header">
+        <div class="anuncio">
+            <img src="/img/caminhao-bau.png" alt="">
+            <span><b>Frete grátis</b> a partir de 149,00</span>
+        </div>
+    </div>
+
+    <div class="container-logo-pesquisa">
+        <div class="logo">
+            <a href="/"><img src="/img/logo perfuma.png" alt=""></a>
+        </div>
+
+        <% if (locals.user) {%>
+            <div>
+                <h3>Bem vindo - <%= locals.user.split(" ", 1) %>
+                </h3>
+            </div>
+            <% }%>
+
+                <div class=" container-search img-search">
+                        <input type="search" name="" id="" placeholder="Oi, o que procura hoje? :)">
+                        <img src="/img/lupa.png" alt="">
+            </div>
+            <h3><a href="/login">Oie! <br> Vem fazer seu login ;)</a></h3>
+            <!-- <a href="/painel_usuario"><p>Ou Cadastre-se</p></a> -->
+
+            <div class="img-lovbag">
+                <img src="/img/love.png" alt="">
+                <img src="/img/shopping-bag.png" alt="">
+            </div>
+    </div>
+
+    <div class="container-menu">
+        <div class="menu img-bars">
+            <img src="/img/menu.png" alt="">
+            <% if(locals.user && locals.admin==="false" ){ %>
+                <a href="/logout">Logout</a>
+                <a href="/profile">Perfil</a>
+                <% } %>
+                    <% if(locals.user===undefined){ %>
+                        <a href="/login">Login</a>
+                        <% } %>
+                            <a href="#">Cabelos</a>
+                            <a href="/finalizarCompra">Finaliza Compra</a>
+        </div>
+
+    </div>
+
+</header>

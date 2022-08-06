@@ -1,0 +1,22 @@
+<%- include("./partials/head") %>
+  <%- include("./partials/header") %>
+    <main class="container-main">
+      <section id="container-form">
+        <h2>Login</h2>
+        <% if(locals.errors){ %>
+          <h2 class="error-alert">
+            <%= errors.msg %>
+          </h2>
+          <% } %>
+            <form action="/login" method="post">
+              <input type="email" name="email" placeholder="E-mail" />
+              <input type="password" name="senha" placeholder="Senha" />
+              <button type="submit">Entrar</button>
+            </form>
+            <section>
+              <span>Não possui conta?</span>
+              <a href="/register">Cadastre-se</a>
+            </section>
+      </section>
+    </main>
+    <%- include("./partials/footer") %>

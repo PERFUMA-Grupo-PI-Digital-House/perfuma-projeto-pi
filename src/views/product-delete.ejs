@@ -1,0 +1,30 @@
+<%- include("./partials/head")%>
+    <%- include("./partials/header")%>
+        <main id="container">
+            
+            <h2>Deletar produto</h2>
+            <% if(locals.product){ %>
+                <div>
+                    <span>
+                        <%= product.nome %>
+                    </span>
+                    <span>
+                        <%= product.descricao %>
+                    </span>
+                    <span>
+                        <%= product.preco %>
+                    </span>
+                    <span>
+                        <%= product.tamanho %>
+                    </span>
+                </div>
+                <form action="/product/delete/<%= product.id %>?_method=delete" method="post">
+                    <h2>Deseja deletar esse produto?</h2>
+                    <a href="/product"><button type="button">Não</button></a>
+                    <button type="submit">Sim</button>
+                </form>
+                <% }else {%>
+                    <h2 class="error-alert">Produto não encontrado!</h2>
+                    <% } %>
+        </main>
+        <%- include("./partials/footer")%>

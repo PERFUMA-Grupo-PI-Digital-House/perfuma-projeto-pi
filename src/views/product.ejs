@@ -1,0 +1,26 @@
+<%- include("./partials/head")%>
+    <%- include("./partials/header")%>
+        <main id="container">
+
+            <h2>Visualizar produtos</h2>
+            <% if(locals.product){ %>
+                <div>
+                    <!-- <img src="<%=  %> " alt="avatar"> -->
+                    <span>
+                        <%= product.nome %>
+                    </span>
+                    <span>
+                        <%= product.descricao %>
+                    </span>
+                    <span>
+                        <%= product.preco %>
+                    </span>
+                    <span>
+                        <%= product.tamanho %>
+                    </span>
+                </div>
+                <% }else {%>
+                    <h2>Produto não encontrado!</h2>
+                    <% } %>
+        </main>
+        <%- include("./partials/footer")%>

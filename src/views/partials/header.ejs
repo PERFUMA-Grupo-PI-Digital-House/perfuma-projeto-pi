@@ -1,38 +1,97 @@
 <header>
-    <div id="container-header">
-        <div class="anuncio">
-            <img src="/img/caminhao-bau.png" alt="">
-            <span><b>Frete grátis</b> a partir de 149,00</span>
-        </div>
+
+  <div id="container-header">
+    <img src="/img/caminhao-bau.png" alt="">
+    <span><b>Frete grátis</b> a partir de 149,00</span>
+  </div>
+
+  <div class="container-logo-pesquisa">
+    <div class="logo">
+      <a href="/"><img src="/img/logo6.png" alt=""></a>
     </div>
 
-    <div class="container-logo-pesquisa">
-        <div class="logo">
-            <a href="/"><img src="/img/logo perfuma.png" alt=""></a>
-        </div>
-        <div class="container-search img-search">
-            <input type="search" name="" id="" placeholder="Oi, o que procura hoje? :)">
-            <img src="/img/lupa.png" alt="">
-        </div>
-        <h3><a href="/login">Oie! <br> Vem fazer seu login ;)</a></h3>
-        <!-- <a href="/painel_usuario"><p>Ou Cadastre-se</p></a> -->
-
-        <div class="img-lovbag">
-            <img src="/img/love.png" alt="">
-            <img src="/img/shopping-bag.png" alt="">
-        </div>
+    <div class=" container-search img-search">
+      <input type="search" name="" id="" placeholder="Oi, o que procura? :)">
+      <img src="/img/lupa.png" alt="">
     </div>
 
-    <div class="container-menu">
-        <div class="menu img-bars">
-            <img src="/img/menu.png" alt="">
-            <a href="#">Ver Tudo</a>
-            <a href="#">Cabelos</a>
-            <a href="produto">Administração</a>
-            <a href="usuarioPainel">Painel de Usuário</a>
-            <a href="finalizarCompra">Finaliza Compra</a>
-        </div>
+
+    <div class="img-lovbag">
+      <% if(locals.user===undefined){ %>
+        <a href="/login"><img src="/img/user.png" alt="Login"></a>
+        <% } else {%>
+          <a href=""><img src="/img/love.png" alt="Favoritos"></a>
+          <% }%>
+            <a href="/"><img src="/img/shopping-bag.png" alt="Carrinho"></a>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-md navbar-light navbar-transparente">
+
+    <div class="container">
+
+      <a href="/" class="navbar-brand">
+        <img src="/img/logo1.png" alt="">
+      </a>
+
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="nav-principal">
+
+        <ul class="navbar-nav ml-auto">
+
+
+          <% if (locals.user) {%>
+            <a class="nav-link">Olá - <%= locals.user %></a>
+            <li class="navbar-item divisor d-none d-md-block"></li>
+            <% }%>
+
+              <% if(locals.user && locals.admin==="false" ){ %>
+
+                <li class="navbar-item dropdown">
+
+                  <a href="/profile" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="true" aria-expanded="false">Minha Conta</a>
+
+                  <!-- Menu dropdown -->
+
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/profile">Meu perfil</a>
+                    <a class="dropdown-item" href="#">Pedidos</a>
+                    <a class="dropdown-item" href="#">Favoritos</a>
+                    <a class="dropdown-item" href="#">Configuração</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/logout">Sair</a>
+                  </div>
+
+                </li>
+
+                <% } %>
+
+                  <% if(locals.user===undefined){ %>
+
+                    <li class="navbar-item">
+                      <a href="/login" class="nav-link">Login</a>
+                    </li>
+
+                    <li class="navbar-item divisor d-none d-md-block"></li>
+
+                    <li class="navbar-item">
+                      <a href="/register" class="nav-link">Cadastre-se</a>
+                    </li>
+
+                    <% } %>
+
+        </ul>
+
+      </div>
 
     </div>
+
+  </nav>
+
+  </div>
 
 </header>

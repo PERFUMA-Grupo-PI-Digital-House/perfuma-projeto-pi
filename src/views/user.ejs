@@ -1,0 +1,23 @@
+<%- include("./partials/head")%>
+    <%- include("./partials/header")%>
+        <main id="container">
+            
+            <h2>Visualizar usuário</h2>
+            <% if(locals.user){ %>
+                <div class="caixa">
+                    <img src="<%= user.avatar %> " alt="avatar">
+                    <span>
+                        <b>Nome:</b>
+                        <%= user.nome %>
+                            <%= user.sobrenome %>
+                    </span>
+                    <span>
+                        <b>E-mail:</b>
+                        <%= user.email %>
+                    </span>
+                </div>
+                <% }else {%>
+                    <h2 class="error-alert">Usuário não encontrado!</h2>
+                    <% } %>
+        </main>
+        <%- include("./partials/footer")%>

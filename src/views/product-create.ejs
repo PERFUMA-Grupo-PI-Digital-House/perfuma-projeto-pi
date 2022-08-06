@@ -1,0 +1,47 @@
+<%- include("./partials/head") %>
+    <%- include("./partials/header-adm") %>
+
+        <main class="container-main">
+            <section id="container-form">
+                <h2>Cadastrar produto</h2>
+                <form action="/product/create" method="post" enctype="multipart/form-data">
+
+                    <label for="nome">Nome do produto</label>
+                    <input type="text" name="nome" value="<%= locals.old ? old.nome : null %> " />
+                    <% if(locals.errors && errors.nome){ %>
+                        <div class="error-alert">
+                            <%= errors.nome.msg %>
+                        </div>
+                        <% } %>
+
+                            <label for="descricao">Descrição do produto</label>
+                            <input type="text" name="descricao" value="<%= locals.old ? old.descricao : null %> " />
+                            <% if(locals.errors && errors.descricao){ %>
+                                <div class="error-alert">
+                                    <%= errors.descricao.msg %>
+                                </div>
+                                <% } %>
+
+                                    <label for="preco">Preço do produto</label>
+                                    <input type="text" name="preco" value="<%= locals.old ? old.preco : null %> " />
+                                    <% if(locals.errors && errors.preco){ %>
+                                        <div class="error-alert">
+                                            <%= errors.preco.msg %>
+                                        </div>
+                                        <% } %>
+
+                                            <label for="imageProduct">Imagem do produto</label>
+                                            <input type="file" name="imageProduct"
+                                                value="<%= locals.old ? old.imageProduct : null %>" />
+                                            <% if(locals.errors && errors.imageProduct){ %>
+                                                <div class="error-alert">
+                                                    <%= errors.imageProduct.msg %>
+                                                </div>
+                                                <% } %>
+                                                    <button type="submit">Salvar</button>
+                </form>
+            </section>
+        </main>
+
+    <%- include("./partials/footer-adm") %>
+        
