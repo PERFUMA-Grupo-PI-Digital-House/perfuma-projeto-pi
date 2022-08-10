@@ -32,5 +32,16 @@
   "ativo": true,
   "criadoEm": "2022-08-06T19:16:45.827Z",
   "modificadoEm": "2022-08-06T19:16:45.827Z"
+ },
+ {
+  "id": 4,
+  "nome": "Valquiria",
+  "sobrenome": "Trigo",
+  "senha": "$2b$10$2i5SnUvUN8q0hwXE65gTeOHEJTTv60yMM0E5K0md2LWstqDoj0VRC",
+  "email": "valquiria.trigo06@gmail.com",
+  "admin": true,
+  "ativo": true,
+  "criadoEm": "2022-08-10T19:31:07.831Z",
+  "modificadoEm": "2022-08-10T19:31:07.831Z"
  }
 ]
