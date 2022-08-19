@@ -9,17 +9,13 @@ const fileName = path.join(__dirname, "..", "database", "users.json");
 
 const authController = {
   // Tela para cadastro do usuário
-  register: (req, res) => {
-    return res.render("user-create", {
+  viewRegister: (req, res) => {
+    return res.render("user-register", {
       title: "Cadastro",
-      user: req.cookies.user,
-      admin: req.cookies.admin,
     });
   },
   // Processamento do cadastro do usuário
   create: (req, res) => {
-    console.log('entrou');
-
     const errors = validationResult(req);
     const allUsersJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
 
@@ -27,15 +23,15 @@ const authController = {
 
     // Verifica se os campos foram preenchidos corretamente
     if (!errors.isEmpty()) {
-      return res.render("user-create", { title: "Cadastrar", errors: errors.mapped(), old: req.body });
-
+      return res.render("user-register", { title: "Cadastro", errors: errors.mapped(), old: req.body });
     }
+    console.log('entrou')
 
     // Verifica se o email já está cadastrado
     const userExists = allUsersJson.find(user => user.email === email);
 
     if (userExists) {
-      return res.render('user-create', {
+      return res.render('user-register', {
         title: "Error",
         errors: {
           email: {
@@ -48,7 +44,7 @@ const authController = {
 
     // Verifica se a senha realmente está correta 
     if (senha !== confirmar_senha) {
-      return res.render('user-create', {
+      return res.render('user-register', {
         title: "Error",
         errors: {
           confirmar_senha: {
@@ -87,7 +83,6 @@ const authController = {
     return res.render("user-login", {
       title: "Login",
       user: req.cookies.user,
-      admin: req.cookies.admin,
     });
   },
   // Processamento do login
@@ -120,8 +115,6 @@ const authController = {
       });
     }
 
-
-
     // Filtra as chaves que o objeto irá ter
     const user = JSON.parse(
       JSON.stringify(userAuth, ["id", "nome", "admin", "ativo"])
@@ -129,20 +122,14 @@ const authController = {
 
     req.session.usuario = user;
 
-
-    res.cookie("user", user.nome);
-    res.cookie("admin", user.admin);
+    res.cookie("user", user, );
 
     if (req.session.usuario.admin) {
-      return res.redirect("/product");
+      return res.redirect("/administrator");
     }
 
     return res.redirect("/");
 
-  },
-
-  profile: (req, res) => {
-    return res.render("user-panel", { title: "Perfil", user: req.cookies.user, admin: req.cookies.admin});
   },
 
   // Processamento do deslogar

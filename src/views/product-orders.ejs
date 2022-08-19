@@ -1,0 +1,25 @@
+<%- include("./partials/head") %>
+    <%- include("./partials/header-adm") %>
+
+    <main class="container-adm">
+        <div class="way">
+            <h5><a href="/order">Pedidos</a></h5>
+        </div>
+        <div class="add-item">
+            <form action="/order/create" method="get">
+                <button type="submit">Adicionar</button>
+            </form>
+        </div>
+
+        <div class="in-table">
+
+            <input type="search" name="" id="" placeholder="Pesquisar...">
+            <img src="/img/lupa.png" alt="">
+
+        </div>
+
+        
+    </main>
+
+
+        <%- include("./partials/footer-adm") %>

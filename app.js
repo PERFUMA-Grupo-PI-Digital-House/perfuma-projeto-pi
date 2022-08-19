@@ -21,6 +21,8 @@ const administratorRoute = require('./src/routes/administratorPanelRoute');
 const productRoute = require('./src/routes/productRoute');
 const indexRoute = require('./src/routes/indexRoute');
 const userRoute = require('./src/routes/userRoute');
+const categoryRoute = require('./src/routes/categoryRoute');
+const orderRoute = require('./src/routes/orderRoute');
 const authRoute = require('./src/routes/authRoute');
 
 // Configuração para acessar externamente conteúdo de uma pasta
@@ -61,6 +63,10 @@ app.use('/administrator', administratorRoute);
 app.use('/user', userRoute);
 //localhost:3000/product/
 app.use('/product', productRoute);
+//localhost:3000/category/
+app.use('/category', categoryRoute);
+//localhost:3000/order/
+app.use('/order', orderRoute);
 //localhost:3000/
 app.use('/', authRoute);
 //localhost:3000/

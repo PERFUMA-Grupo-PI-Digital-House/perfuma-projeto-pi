@@ -1,0 +1,28 @@
+<%- include("./partials/head") %>
+    <%- include("./partials/header-adm") %>
+        <div class="way">
+            <h5><a href="/category/">Categoria</a></h5>
+            <h5> - Atualizar categoria</h5>
+        </div>
+
+        <main class="container-main">
+            <section id="container-form">
+                <h2>Atualizar categoria</h2>
+                <% if(locals.error){ %>
+                    <h2 class="error-alert">
+                        <%= error.message %>
+                    </h2>
+                    <% } %>
+                        <form action="/category/edit/<%= category.id %>?_method=put" method="post">
+                            <label for="nome">Nome:</label>
+                            <input value="<%= category.nome %>" type="text" name="nome" />
+                            <label for="nome">Descrição:</label>
+                            <input value="<%= category.descricao %>" type="text" name="descricao" />
+
+                            <button type="submit">Atualizar</button>
+                        </form>
+
+            </section>
+        </main>
+
+        <%- include('./partials/footer-adm') %>

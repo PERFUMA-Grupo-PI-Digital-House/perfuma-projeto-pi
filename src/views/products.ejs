@@ -1,56 +1,67 @@
 <%- include("./partials/head") %>
 
-    <%- include("./partials/header") %>
+    <%- include("./partials/header-adm") %>
 
-        <main id="container">
-            <h2>Lista de produtos</h2>
+        <main id="container-principal-product">
+            <div class="way">
+                <h5>Produtos</h5>
+            </div>
+            <div class="add-item">
+                <form action="/product/create" method="get">
+                    <button type="submit">Adicionar</button>
+                </form>
+            </div>
+
+            <div class="in-table">
+
+                <input type="search" name="" id="" placeholder="Pesquisar...">
+                <img src="/img/lupa.png" alt="">
+
+            </div>
+
             <% if(listProducts.length> 0) { %>
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Preço</th>
-                                <th>Descrição</th>
-                                <th>Preço</th>
-                                <th>Tamanho</th>
-                                <th>Ação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% for (let product of listProducts) { %>
-                                <tr>
-                                    <td>
+                <div class="table">
+
+                    <% for (let product of listProducts) { %>
+                        <div class="box">
+                            <div class="img-product">
+                                <img src=" <%= product.imageProduct %> " alt="">
+                                <div class="name-product">
+                                    <h3>
                                         <%= product.nome %>
-                                    </td>
-                                    <td>
-                                        <%= product.preco %>
-                                    </td>
-                                    <td>
-                                        <%= product.descricao %>
-                                    </td>
-                                    <td>
-                                        <%= product.preco %>
-                                    </td>
-                                    <td>
-                                        <%= product.tamanho %>
-                                    </td>
-                                    <td class="table-actions">
-                                        <a href="/product/<%= product.id %>" class="table-link-show"
-                                            href="">Visualizar</a>
-                                        <a href="/product/edit/<%= product.id %>" class="table-link-edit"
-                                            href="">Editar</a>
-                                        <a href="/product/delete/<%= product.id %>" class="table-link-delete"
-                                            href="">Excluir</a>
-                                    </td>
-                                </tr>
-                                <% } %>
-                        </tbody>
-                    </table>
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <h4>Descrição:</h4>
+                                <h5>
+                                    <%= product.descricao %>
+                                </h5>
+                            </div>
+                            <div class="price">
+                                <h4>Preço:</h4>
+                                <h5>R$ <%= product.preco %>
+                                </h5>
+                            </div>
+                            <div class="btn-product">
+                                <a href="/product/edit/<%= product.id %>">
+                                    <button type="button">
+                                        <img src="/img/pen.png" alt="">
+                                    </button>
+                                </a>
+                                <a href="/product/delete/<%= product.id %>">
+                                    <button type="button">
+                                        <img src="/img/lata-de-lixo.png" alt="">
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <% } %>
+
                 </div>
                 <% } else { %>
                     <h2 class="error-alert">Nenhum produto encontrado!!</h2>
                     <% } %>
         </main>
 
-        <%- include("./partials/footer") %>
+        <%- include("./partials/footer-adm") %>

@@ -7,22 +7,28 @@ const userController = require('../controllers/UserController');
 // Middlewares
 const upload = require('../middlewares/multer');
 const validator = require('../middlewares/validatorRegisterMiddleware');
+const isAuth = require('../middlewares/auth');
+const isGuest = require("../middlewares/guest");
+
 
 // Criar usuário
-router.get("/create", userController.create);
-router.post("/create", upload.single('avatar'), validator, userController.store);
+router.get("/create", isAuth, userController.create);
+router.post("/create", isAuth, upload.single('avatar'), validator, userController.store);
 
 // Editar usuário
-router.get("/edit/:id", userController.edit);
-router.put("/edit/:id", userController.update);
+router.get("/edit/:id",isAuth, userController.edit);
+router.put("/edit/:id",isAuth, userController.update);
 
 // Deletar usuário
-router.get("/delete/:id", userController.delete);
-router.delete("/delete/:id", userController.destroy);
+router.get("/delete/:id",isAuth, userController.delete);
+router.delete("/delete/:id",isAuth, userController.destroy);
+
+// Rota para página perfil do usuário
+router.get("/profile", isAuth, userController.profile);
 
 // Visualizar usuário
-router.get("/", userController.index);
-router.get('/:id', userController.show);
+router.get("/",isAuth, userController.index);
+router.get('/:id',isAuth, userController.show);
 
 
 module.exports = router;

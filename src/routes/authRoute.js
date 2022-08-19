@@ -16,11 +16,9 @@ router.get("/login", isGuest, authController.login);
 router.post("/login", isGuest, authController.auth);
 
 // Rota para página registrar
-router.get("/register", isGuest, authController.register);
+router.get("/register", isGuest, authController.viewRegister);
 router.post("/register", isGuest, upload.single('avatar'), validator, authController.create);
 
-// Rota para página perfil do usuário
-router.get("/profile", isAuth, authController.profile);
 
 // Rota para sair do login
 router.get("/logout", isAuth, authController.logout);

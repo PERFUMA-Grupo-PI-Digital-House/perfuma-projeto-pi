@@ -1,48 +1,64 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-transparente">
 
-    <a href="/" class="navbar-brand">
-      <h5>Administrador</h5>
-    </a>
+  <a href="/administrator" class="navbar-brand">
+    <h5>Administrador</h5>
+  </a>
 
-    <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#nav-principal">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="nav-principal">
+  <div class="collapse navbar-collapse" id="nav-principal">
 
-      <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto">
 
-        <li class="navbar-item">
-          <a href="/user/" class="nav-link">Clientes</a>
-        </li>
+      <li class="navbar-item">
+        <a href="/user" class="nav-link">Clientes</a>
+      </li>
 
-        <li class="navbar-item divisor d-none d-md-block"></li>
+      <li class="navbar-item divisor d-none d-md-block"></li>
 
-        <li class="navbar-item">
-          <a href="/product" class="nav-link">Produtos</a>
-        </li>
+      <li class="navbar-item">
+        <a href="/product" class="nav-link">Produtos</a>
+      </li>
 
-        <li class="navbar-item divisor d-none d-md-block"></li>
+      <li class="navbar-item divisor d-none d-md-block"></li>
 
-        <li class="navbar-item">
-          <a href="*" class="nav-link">Categoria</a>
-        </li>
+      <li class="navbar-item">
+        <a href="/category" class="nav-link">Categoria</a>
+      </li>
 
-        <li class="navbar-item divisor d-none d-md-block"></li>
+      <li class="navbar-item divisor d-none d-md-block"></li>
 
-        <li class="navbar-item">
-          <a href="*" class="nav-link">Pedidos</a>
-        </li>
+      <li class="navbar-item">
+        <a href="/order" class="nav-link">Pedidos</a>
+      </li>
 
-        <li class="navbar-item divisor d-none d-md-block"></li>
+      <li class="navbar-item divisor d-none d-md-block"></li>
 
 
-        <li class="navbar-item">
-          <a href="/logout" class="nav-link">Sair</a>
-        </li>
+      <li class="navbar-item">
+        <a href="/logout" class="nav-link">Sair</a>
+      </li>
 
-      </ul>
+    </ul>
 
+  </div>
+
+</nav>
+
+<div class="center-adm">
+  <div class="header-adm">
+    <div class="header-top-adm">
+      <img src="/img/do-utilizador.png" alt="">
+      <% if (locals.user) {%>
+        <h3>Olá - <%= locals.user.nome %>
+        </h3>
+        <% }%>
     </div>
+    <div class="logo-adm">
+      <img src="/img/logo6.png" alt="">
+    </div>
+  </div>
 
-  </nav>
+</div>

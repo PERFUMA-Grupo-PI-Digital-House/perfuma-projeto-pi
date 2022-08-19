@@ -4,8 +4,11 @@ const router = express.Router();
 // Controllers
 const administratorPanelController = require('../controllers/administratorPanelController');
 
+// Middlewares
+const isAuth = require('../middlewares/auth');
+
 // Rotas
-router.get('/adm', administratorPanelController.showPanel);
+router.get('/', isAuth, administratorPanelController.index);
 
 
 module.exports = router;

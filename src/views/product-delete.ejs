@@ -1,30 +1,44 @@
 <%- include("./partials/head")%>
-    <%- include("./partials/header")%>
-        <main id="container">
-            
-            <h2>Deletar produto</h2>
-            <% if(locals.product){ %>
-                <div>
-                    <span>
-                        <%= product.nome %>
-                    </span>
-                    <span>
-                        <%= product.descricao %>
-                    </span>
-                    <span>
-                        <%= product.preco %>
-                    </span>
-                    <span>
-                        <%= product.tamanho %>
-                    </span>
-                </div>
-                <form action="/product/delete/<%= product.id %>?_method=delete" method="post">
-                    <h2>Deseja deletar esse produto?</h2>
-                    <a href="/product"><button type="button">Não</button></a>
-                    <button type="submit">Sim</button>
-                </form>
-                <% }else {%>
-                    <h2 class="error-alert">Produto não encontrado!</h2>
-                    <% } %>
+    <%- include("./partials/header-adm")%>
+        <div class="way">
+            <h5><a href="/product/">Produto</a></h5>
+            <h5> - Deletar produto</h5>
+        </div>
+        <main class="container-main">
+            <section id="container-form">
+
+                <% if(locals.product){ %>
+                    <div class="box">
+                        <div class="img-product">
+                            <img src="<%= product.imageProduct %> " alt="">
+                            <div>
+                                <h3>
+                                    <%= product.nome %>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="description">
+                            <h4>Descrição:</h4>
+                            <h5>
+                                <%= product.descricao %>
+                            </h5>
+                        </div>
+                        <div class="price">
+                            <h4>Preço:</h4>
+                            <h5>R$ <%= product.preco %>
+                            </h5>
+                        </div>
+                    </div>
+
+
+                    <form class="form-delete" action="/product/delete/<%= product.id %>?_method=delete" method="post">
+                        <h3>Deseja deletar esse produto?</h3>
+                        <a href="/product"><button type="button">Não</button></a>
+                        <button type="submit">Sim</button>
+                    </form>
+                    <% }else {%>
+                        <h2 class="error-alert">Produto não encontrado!</h2>
+                        <% } %>
+            </section>
         </main>
-        <%- include("./partials/footer")%>
+        <%- include("./partials/footer-adm")%>

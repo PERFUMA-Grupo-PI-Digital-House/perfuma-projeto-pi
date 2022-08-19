@@ -1,61 +1,81 @@
 <%- include("./partials/head") %>
     <%- include("./partials/header") %>
-        <main>
+        <main class="container-main">
             <div class="container-principal-PanelUser">
                 <div class="container-PanelUser">
-                    <div class="user">
-                        <img src="/img/do-utilizador.png" alt="">
-                        <h4>Vinicius Gonçalves</h4>
-                    </div>
-                    <div class="creditos">
-                        <ul>
-                            <h3>Créditos</h3>
-                            <li><span>Total</span><span>R$ 0,00</span></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- <div class="container-central"> -->
-                    <!-- <div class="meus-pedidos">
-                        <h3>Meus Pedidos</h3>
-                        <span>Aqui você encontra todas as informações do seu pedido.</span>
-                        <div class="table">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Pedidos</th>
-                                        <th>Data</th>
-                                        <th>Pagamento</th>
-                                        <th>Posição</th>
-                                        <th>NF-e</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>7677412</td>
-                                        <td>17/06/2022</td>
-                                        <td>Cartão de Crédito</td>
-                                        <td>Enviado</td>
-                                        <td><img src="/img/file.png" alt=""></td>
-                                    </tr>
-                                    <tr>
-                                        <td>7677412</td>
-                                        <td>17/06/2022</td>
-                                        <td>Cartão de Crédito</td>
-                                        <td>Enviado</td>
-                                        <td><img src="/img/file.png" alt=""></td>
-                                    </tr>
-                                    <tr>
-                                        <td>7677412</td>
-                                        <td>17/06/2022</td>
-                                        <td>Cartão de Crédito</td>
-                                        <td>Enviado</td>
-                                        <td><img src="/img/file.png" alt=""></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <section class="section-side">
+                        <% if (locals.user) {%>
+                            <div class="user">
+                                <img src="<%= user.avatar %>" alt="">
+
+                                <h4>
+                                    Olá - <%= locals.user.nome %>
+                                </h4>
+
+                            </div>
+                            <div class="btn-userPanel">
+                                <a href="/user/edit/<%= locals.user.id %>"><button type="button">Editar
+                                        perfil</button></a>
+                            </div>
+                            <div class="creditos">
+                                <ul>
+                                    <h3>Créditos</h3>
+                                    <li><span>Total</span><span>R$ 0,00</span></li>
+                                </ul>
+                            </div>
+
+                            <% }%>
+                    </section>
+
+                    <section class="purchases-made">
+                        <div class="title-purchase">
+                            <h3>Compras Realizadas</h3>
                         </div>
-                    </div> -->
-                <!-- </div> -->
+
+                        <div class="container-purchases">
+
+                            <div class="purchase">
+                                <img src="../../img/9.png" alt="">
+                                <div class="name-purchase">
+                                    <h3>
+                                        Colônia Granado
+                                    </h3>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="container-purchases">
+
+                            <div class="purchase">
+                                <img src="../../img/9.png" alt="">
+                                <div class="name-purchase">
+                                    <h3>
+                                        Colônia Granado
+                                    </h3>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="container-purchases">
+
+                            <div class="purchase">
+                                <img src="../../img/9.png" alt="">
+                                <div class="name-purchase">
+                                    <h3>
+                                        Colônia Granado
+                                    </h3>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
+                </div>
+
+
+
 
                 <div class="atendimento-cliente">
                     <h4>Atendimento ao cliente</h4>

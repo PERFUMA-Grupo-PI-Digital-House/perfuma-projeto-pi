@@ -17,7 +17,7 @@
 
 
     <div class="img-lovbag">
-      <% if(locals.user===undefined){ %>
+      <% if(!locals.user){ %>
         <a href="/login"><img src="/img/user.png" alt="Login"></a>
         <% } else {%>
           <a href=""><img src="/img/love.png" alt="Favoritos"></a>
@@ -44,21 +44,21 @@
 
 
           <% if (locals.user) {%>
-            <a class="nav-link">Olá - <%= locals.user %></a>
+            <a class="nav-link">Olá - <%= locals.user.nome %></a>
             <li class="navbar-item divisor d-none d-md-block"></li>
             <% }%>
 
-              <% if(locals.user && locals.admin==="false" ){ %>
+              <% if(locals.user && !locals.user.admin ){ %>
 
                 <li class="navbar-item dropdown">
 
-                  <a href="/profile" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                  <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                     aria-haspopup="true" aria-expanded="false">Minha Conta</a>
 
                   <!-- Menu dropdown -->
 
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/profile">Meu perfil</a>
+                    <a class="dropdown-item" href="/user/<%= locals.user.id %> ">Meu perfil</a>
                     <a class="dropdown-item" href="#">Pedidos</a>
                     <a class="dropdown-item" href="#">Favoritos</a>
                     <a class="dropdown-item" href="#">Configuração</a>
@@ -70,7 +70,7 @@
 
                 <% } %>
 
-                  <% if(locals.user===undefined){ %>
+                  <% if(!locals.user){ %>
 
                     <li class="navbar-item">
                       <a href="/login" class="nav-link">Login</a>
@@ -91,7 +91,5 @@
     </div>
 
   </nav>
-
-  </div>
 
 </header>

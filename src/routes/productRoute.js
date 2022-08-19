@@ -8,17 +8,26 @@ const productControlller = require('../controllers/ProductController');
 // Middlewares
 const upload = require('../middlewares/multer');
 const validator = require('../middlewares/validatorProduct');
+const isAuth = require('../middlewares/auth');
 
-router.get("/create", productControlller.create);
-router.post("/create", upload.single('imageProduct'), validator, productControlller.store);
 
-router.get("/edit/:id", productControlller.edit);
-router.put("/edit/:id", productControlller.update);
+router.get("/create",isAuth, productControlller.create);
+router.post("/create",isAuth, upload.single('imageProduct'), validator, productControlller.store);
 
-router.get("/delete/:id", productControlller.delete);
-router.delete("/delete/:id", productControlller.destroy);
+router.get("/edit/:id",isAuth, productControlller.edit);
+router.put("/edit/:id",isAuth, productControlller.update);
 
-router.get("/", productControlller.index);
-router.get("/:id", productControlller.show);
+router.get("/delete/:id",isAuth, productControlller.delete);
+router.delete("/delete/:id",isAuth, productControlller.destroy);
+
+router.get("/description",isAuth, productControlller.viewProduct);
+
+router.get("/payment", isAuth, productControlller.viewPayment);
+
+router.get("/finish", isAuth, productControlller.viewFinishPayment);
+
+router.get("/",isAuth, productControlller.index);
+router.get("/:id",isAuth, productControlller.show);
+
 
 module.exports = router;

@@ -1,27 +1,45 @@
 <%- include("./partials/head")%>
-    <%- include("./partials/header")%>
-        <main id="container">
-            <h1>Bem vindo ao painel administrativo</h1>
-            <h2>Deletar usuário</h2>
-            <% if(locals.user){ %>
-                <div class="caixa">
-                    <img src="<%= user.avatar %> " alt="avatar">
-                    <span>
-                        <%= user.nome %>
-                            <%= user.sobrenome %>
-                    </span>
-                    <span>
-                        <%= user.email %>
-                    </span>
-                    
-                </div>
-                <form class="delete-buttons" action="/user/delete/<%= user.id %>?_method=delete" method="post">
-                    <h2>Deseja deletar esse usuário?</h2>
-                    <a href="/user"><button type="button">Não</button></a>
-                    <button type="submit">Sim</button>
-                </form>
-                <% }else {%>
-                    <h2 class="error-alert">Usuário não encontrado!</h2>
-                    <% } %>
+    <%- include("./partials/header-adm")%>
+        <div class="way">
+            <h5><a href="/user/">Cliente</a></h5>
+            <h5> - Deletar cliente</h5>
+        </div>
+        <main class="container-main">
+            <section id="container-form">
+
+                <% if(locals.user){ %>
+                    <div class="box-user">
+                        <div class="img-user">
+                            <img src=" <%= user.avatar %> " alt="avatar">
+                        </div>
+                        <div class="user-name">
+                            <h4>Nome:</h4>
+                            <h4>
+                                <%= user.nome %>
+                            </h4>
+                        </div>
+                        <div class="user-sobrenome">
+                            <h4>Sobrenome:</h4>
+                            <h4>
+                                <%= user.sobrenome %>
+                            </h4>
+                        </div>
+                        <div class="user-email-delete">
+                            <h4>E-mail:</h4>
+                            <h4>
+                                <%= user.email %>
+                            </h4>
+                        </div>
+                    </div>
+
+                    <form class="form-delete" action="/user/delete/<%= user.id %>?_method=delete" method="post">
+                        <h3>Deseja deletar esse usuário?</h3>
+                        <a href="/user"><button type="button">Não</button></a>
+                        <button type="submit">Sim</button>
+                    </form>
+                    <% }else {%>
+                        <h2 class="error-alert">Usuário não encontrado!</h2>
+                        <% } %>
+            </section>
         </main>
-        <%- include("./partials/footer")%>
+        <%- include("./partials/footer-adm")%>

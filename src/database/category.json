@@ -1,0 +1,23 @@
+[
+ {
+  "id": 1,
+  "nome": "Perfumes masculino",
+  "descricao": "Perfumes da linha masculina",
+  "criadoEm": "2022-08-19T17:33:38.644Z",
+  "modificadoEm": "2022-08-19T17:33:38.644Z"
+ },
+ {
+  "id": 2,
+  "nome": "Perfumes feminino",
+  "descricao": "Perfumes da linha feminina",
+  "criadoEm": "2022-08-19T17:34:27.408Z",
+  "modificadoEm": "2022-08-19T17:34:27.408Z"
+ },
+ {
+  "id": 3,
+  "nome": "Perfumes infantil",
+  "descricao": "Perfumes da linha infantil",
+  "criadoEm": "2022-08-19T17:34:59.680Z",
+  "modificadoEm": "2022-08-19T17:34:59.680Z"
+ }
+]

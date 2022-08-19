@@ -1,18 +1,9 @@
 <%- include("./partials/head") %>
-    <%- include("./partials/header-adm") %>
-        <div class="way">
-            <h5><a href="/user/">Cliente</a></h5>
-            <h5> - Cadastrar cliente</h5>
-        </div>
+    <%- include("./partials/header") %>
         <main class="container-main">
             <section id="container-form">
-                <% if(locals.errors){ %>
-                    <h2 class="error-alert">
-                      <%= errors.messagem %>
-                    </h2>
-                    <% } %>
                 <h2>Cadastrar</h2>
-                <form action="/user/create" method="post" enctype="multipart/form-data">
+                <form action="/register" method="post">
 
                     <label for="nome">Nome</label>
                     <input type="text" name="nome" value="<%= locals.old ? old.nome : null %>" />
@@ -65,8 +56,8 @@
                                                                 </div>
                                                                 <% } %>
 
-                                                            <button type="submit">Adicionar</button>
+                                                                    <button type="submit">Adicionar</button>
                 </form>
             </section>
         </main>
-        <%- include("./partials/footer-adm") %>
+        <%- include("./partials/footer") %>

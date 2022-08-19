@@ -1,0 +1,28 @@
+<%- include("./partials/head")%>
+    <%- include("./partials/header")%>
+
+        <main class="container-main">
+            <section id="container-form">
+
+                <h2>Pagamento com cartão</h2>
+                <% if(locals.error){ %>
+                    <h2 class="error-alert">
+                        <%= error.message %>
+                    </h2>
+                    <% } %>
+                        <form action="" method="post" class="form-payment-product">
+                            <input type="text" name="nome" placeholder="Nome *" />
+                            <input type="text" name="numeroCartao" placeholder="Numero do cartão *" />
+                            <input type="text" name="codigo" placeholder="CVV *" />
+                            <div class="inputs-vencimento">
+                                <input type="text" name="dateCartaoVencimentoMes" placeholder="Expiração mês *" />
+                                <input type="text" name="dateCartaoVencimentoAno" placeholder="Expiração ano *" />
+                            </div>
+
+                            <a href="/product/finish"><button type="button">Pagar</button></a>
+                        </form>
+
+            </section>
+        </main>
+
+        <%- include("./partials/footer")%>

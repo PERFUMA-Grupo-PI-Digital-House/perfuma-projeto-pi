@@ -119,7 +119,7 @@ h4 {
 }
 
 
-/* Barra de navegação
+/* Bar navegation
 ---------------------------------*/
 
 nav {
@@ -190,7 +190,6 @@ nav.navbar-transparente {
     width: 90%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     padding: 10px 0;
 }
@@ -229,8 +228,7 @@ nav.navbar-transparente {
     align-items: center;
 }
 
-.section-categorias h3,
-section h3 {
+.section-categorias h3 {
     text-transform: uppercase;
     font-weight: bolder;
     color: rgb(146, 70, 169, 0.6);
@@ -289,28 +287,115 @@ section h3 {
     padding: 5px 0;
 }
 
-/* Main show user
+/* Main decription product
 ------------------------*/
 
-
-.caixa {
-    max-width: 35%;
-    min-height: 50vh;
+.container-product {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    border: 2px solid black;
-    background-color: antiquewhite;
+    justify-content: center;
 }
 
-.caixa img {
-    width: 70%;
-    height: 70%;
-    border-radius: 50%;
+.container-top-description-product {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-title-imageproduct {
+    width: 95%;
+}
+
+.container-title-imageproduct h4 {
+    color: #a12ec4;
+    font-weight: bolder;
+}
+
+.container-view-product {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: rgba(161, 46, 196, 0.4) 0px 2px 8px 0px;
+    margin-bottom: 10px;
+}
+
+.image-big img {
+    width: 45%;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.view-img img {
+    width: 15%;
+    margin: 10px;
+    border: 1px solid #a12ec4;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container-pay {
+    width: 95%;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    font-weight: bolder;
+    background-color: rgb(146, 70, 169);
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.btn-pay h4 img {
+    width: 5%;
+    margin-right: 5px;
+}
+
+.btn-pay a {
+    text-decoration: none;
+}
+
+.btn-pay button[type="button"] {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
+    background-color: rgb(255, 215, 0);
+    padding: 5px;
+    font-weight: bolder;
     margin: 10px 0;
 }
 
+.btn-pay button[type="button"]:hover {
+    background-color: rgb(255, 215, 0, 0.4);
+
+}
+
+.container-description {
+    width: 95%;
+    text-align: left;
+    color: #a12ec4;
+    border-radius: 5px;
+    box-shadow: rgba(161, 46, 196, 0.4) 0px 2px 8px 0px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.container-description h3 {
+    background-color: #a12ec4;
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.container-description h4 {
+    margin-top: 20px;
+    font-weight: 900;
+}
 
 /* Main user panel
 ------------------------*/
@@ -321,6 +406,7 @@ section h3 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-top: 5px;
 }
 
@@ -349,6 +435,7 @@ section h3 {
 .user img {
     width: 40%;
     margin-bottom: 10px;
+    border-radius: 50%;
 }
 
 .user h4,
@@ -359,12 +446,40 @@ section h3 {
     color: rgb(255, 255, 255)
 }
 
+.btn-userPanel {
+    width: 100%;
+}
+
+.btn-userPanel a {
+    text-decoration: none;
+}
+
+.btn-userPanel a button[type="button"] {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
+    background-color: rgb(255, 215, 0);
+    padding: 5px;
+    font-weight: bolder;
+    margin: 5px 0;
+}
+
+.btn-userPanel a button[type="button"]:hover {
+    background-color: rgb(255, 215, 0, 0.4);
+
+}
+
 
 .creditos {
     width: 100%;
     border: 1px solid #a12ec4;
     border-radius: 5px;
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 .creditos ul h3 {
@@ -387,6 +502,47 @@ section h3 {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid white;
+}
+
+.purchases-made {
+    width: 100%;
+    border: 1px solid #a12ec4;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.title-purchase h3 {
+    padding: 5px;
+    background-color: rgb(146, 70, 169);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgb(255, 255, 255)
+}
+
+.container-purchases {
+    width: 100%;
+    background-color: rgb(146, 70, 169, 0.4);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.purchase {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.purchase img {
+    width: 13%;
+}
+
+.name-purchase h3 {
+    font-size: 1.3rem;
 }
 
 .atendimento-cliente {
@@ -430,23 +586,11 @@ section h3 {
 }
 
 
-/* Main administrator panel
+/* Header administrator panel
 ------------------------*/
-
-
-#container-principal-adm {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 .navbar-brand h5 {
     color: rgb(255, 215, 0);
-}
-
-#container-principal-adm .navbar-brand h5 {
     font-weight: bolder;
     font-size: 2rem;
 }
@@ -491,7 +635,63 @@ section h3 {
     width: 50px;
 }
 
-.caminho-adm {
+/* Main products finish
+------------------------*/
+
+.inf-finish {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #a12ec4;
+    text-align: center;
+    font-weight: 900;
+}
+
+.inf-finish img {
+    width: 30%;
+}
+
+.btn-finish {
+    width: 50%;
+}
+
+.btn-finish a {
+    text-decoration: none;
+}
+
+.btn-finish a button[type="button"] {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    border-color: rgb(255, 255, 255);
+    background-color: rgb(255, 215, 0);
+    padding: 5px;
+    margin: 5px 3px;
+}
+
+.btn-finish a button[type="button"]:hover {
+    background-color: rgb(255, 215, 0, 0.4);
+}
+
+
+/* Main products and users administrator
+------------------------*/
+
+
+#container-principal-product,
+#container-principal-user {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.way {
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -504,15 +704,24 @@ section h3 {
     margin: 5px 0;
 }
 
-.caminho-adm h5 {
+.way h5 {
     padding-right: 10px;
 }
 
-.adicionar-item-adm {
+.way h5 a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.way h5 a:hover {
+    color: rgb(0, 0, 0);
+}
+
+.add-item {
     width: 100%;
 }
 
-.adicionar-item-adm form button[type="submit"] {
+.add-item form button[type="submit"] {
     width: 100%;
     height: 5vh;
     display: flex;
@@ -527,13 +736,13 @@ section h3 {
     background-color: rgb(146, 70, 169, 0.8);
 }
 
-.in-table-adm {
+.in-table {
     width: 100%;
     position: relative;
     margin: 5px 0;
 }
 
-.in-table-adm img {
+.in-table img {
     position: absolute;
     width: 20px;
     top: 30%;
@@ -548,8 +757,10 @@ section h3 {
     align-items: center;
 }
 
-.box {
+.box,
+.box-user {
     width: 95%;
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -563,18 +774,27 @@ section h3 {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-.box img {
+.box img,
+.box-user img {
     width: 50%;
 }
 
-.box h4 {
+.box h4,
+.box-user h4 {
     font-weight: bolder;
+    text-align: left;
+}
+
+.box h5 {
+    text-align: left;
 }
 
 .description {
     width: 100%;
+    height: 14vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     margin-bottom: 5px;
     color: white;
     border-bottom: 1px solid rgb(255, 255, 255);
@@ -591,6 +811,49 @@ section h3 {
     border-bottom: 1px solid rgb(255, 255, 255);
 }
 
+.img-user {
+    margin-bottom: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+.user-email,
+.user-sobrenome,
+.user-name {
+    margin-bottom: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    color: white;
+    border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+.user-email-delete {
+    margin-bottom: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.img-user img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.name-product h3 {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
 .price {
     width: 100%;
     display: flex;
@@ -599,14 +862,25 @@ section h3 {
     color: white;
 }
 
-.btn-adm {
+.btn-product,
+.btn-category,
+.btn-user {
     width: 100%;
     display: flex;
+    justify-content: space-around;
 }
 
-.btn-adm button[type="button"] {
+.btn-product a,
+.btn-category a,
+.btn-user a {
+    width: 45%;
+
+}
+
+.btn-product a button[type="button"],
+.btn-category a button[type="button"],
+.btn-user a button[type="button"] {
     width: 100%;
-    padding: 3px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -618,14 +892,107 @@ section h3 {
     margin: 5px 3px;
 }
 
-.btn-adm button:hover {
+.btn-product a button:hover,
+.btn-category a button:hover,
+.btn-user a button:hover {
     background-color: rgb(255, 215, 0, 0.4);
 }
 
-.btn-adm button img {
+.btn-product a button img,
+.btn-category a button img,
+.btn-user a button img {
     width: 20px;
     height: 15px;
     cursor: pointer;
+}
+
+
+/* Main panel administrator
+------------------------*/
+
+#container-principal-adm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.caixa-panel-adm {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    border-radius: 5px;
+    box-shadow: rgba(161, 46, 196, 0.35) 0px 5px 15px;
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+.caixa-panel-adm a {
+    text-align: center;
+    color: #a12ec4;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.caixa-panel-adm img {
+    width: 30%;
+}
+
+
+/* Main category
+------------------------*/
+
+.container-adm {
+    width: 100%;
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.category {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-btn-categorias {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.btn-categoria {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    border-radius: 5px;
+    box-shadow: rgba(161, 46, 196, 0.35) 0px 5px 15px;
+    margin-bottom: 10px;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.btn-categoria a {
+    color: #a12ec4;
+    text-decoration: none;
+}
+
+.btn-categoria a:hover {
+    color: rgba(161, 46, 196, 0.35);
 }
 
 
@@ -667,40 +1034,6 @@ tbody tr:hover {
     background-color: rgb(161, 46, 196, 0.2);
 }
 
-.table-actions a {
-    padding: 5px 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    text-decoration: none;
-    width: 100%;
-    text-align: center;
-}
-
-.table-actions a.table-link-show {
-    background-color: #03293bee;
-}
-
-.table-actions a.table-link-show:hover {
-    background-color: #03293baa;
-}
-
-.table-actions a.table-link-edit {
-    background-color: #392a8bee;
-}
-
-.table-actions a.table-link-edit:hover {
-    background-color: #392a8baa;
-}
-
-.table-actions a.table-link-delete {
-    background-color: #923333;
-}
-
-.table-actions a.table-link-delete:hover {
-    background-color: #923333aa;
-}
 
 /* Mensagens de alertas
 ------------------------*/
@@ -728,8 +1061,24 @@ form {
     padding: 10px;
 }
 
+form.form-delete {
+    width: 100%;
+    min-height: 20vh;
+    display: flex;
+    align-items: center;
+}
+
+form.form-delete h3 {
+    color: #a12ec4;
+}
+
+form.form-delete a {
+    width: 100%;
+}
+
 label {
     margin: 0;
+    color: #a12ec4;
 }
 
 form label {
@@ -741,14 +1090,89 @@ form input {
     height: 2.5rem;
     background-color: rgb(161, 46, 196, 0.2);
     margin-bottom: 10px;
+    outline: none;
 }
+
+form.form-payment-product a {
+    text-align: left;
+    width: 100%;
+    text-decoration: none;
+}
+
+
+form.form-payment-product .inputs-vencimento {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form.form-payment-product .inputs-vencimento input {
+    width: 49%;
+}
+
+form .preco-categoria {
+    width: 100%;
+    text-align: left;
+    position: relative;
+}
+
+form div .dropDown {
+    position: absolute;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    background-color: rgb(161, 46, 196, 0.8);
+    border-radius: 5px;
+    height: 60px;
+    overflow: auto;
+    display: none;
+
+    transform: translate(0px, -10px);
+}
+
+form ::-webkit-scrollbar {
+    width: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgb(161, 46, 196);
+}
+
+form ::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 255, 255, 0.5);
+    border-radius: 5px;
+}
+
+form .item {
+    height: 30px;
+    padding: 0 5px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+form .item:hover {
+    background-color: rgb(255, 255, 255, 0.3);
+    padding-left: 7px;
+    transition: .3s;
+}
+
+form .container-preco-categoria {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* form.container-select input{
+
+} */
 
 
 /* Botões e inputs
 ------------------------*/
 
 .container-search input[type='search'],
-.in-table-adm input[type="search"] {
+.in-table input[type="search"] {
     width: 100%;
     height: 6vh;
     border-radius: 5px;
@@ -762,7 +1186,7 @@ form input {
 }
 
 .container-search input[type='search']:focus,
-.in-table-adm input[type='search']:focus {
+.in-table input[type='search']:focus {
     background-color: rgb(255, 255, 255, 0.2);
     border-color: rgb(146, 70, 169);
     box-shadow: 0 0 8px 0 rgb(146, 70, 169);
@@ -782,18 +1206,22 @@ form button[type="button"],
     border-radius: 10px;
 }
 
+.btn-delete {
+    width: 100%;
+    height: 30px;
+    padding: 0 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-color: rgb(255, 255, 255);
+    background-color: rgb(146, 70, 169, 0.8);
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
 form button[type="submit"]:hover,
 .perfumes button[type="button"]:hover {
     background-color: rgb(146, 70, 169, 0.3);
 }
-
-/* form button[type="button"] {
-    background-color: rgb(255, 0, 0, 0.7);
-}
-
-form a button[type="button"]:hover {
-    background-color: rgb(255, 0, 0, 0.4);
-} */
 
 .delete-buttons a {
     width: 100%;
@@ -988,12 +1416,69 @@ form a button[type="button"]:hover {
         height: 4vh;
     }
 
-    .box {
-        width: 46%;
+    .box,
+    .box-user {
+        width: 50%;
+        min-height: 10vh;
     }
 
     #container-form {
         width: 70%;
+    }
+
+    .container-PanelUser {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .purchases-made {
+        margin: 0 5px;
+    }
+
+    .container-top-description-product {
+        width: 95%;
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+    }
+
+    .container-title-imageproduct {
+        min-height: 27vh;
+    }
+
+    .container-pay {
+        margin-left: 10px;
+        min-height: 28vh;
+    }
+
+    #container-principal-adm {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .caixa-panel-adm {
+        width: 40%;
+        margin: 5px;
+    }
+
+    form .preco-categoria {
+        width: 49%;
+    }
+
+    form .container-preco-categoria {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .container-btn-categorias {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .btn-categoria {
+        width: 32%;
     }
 
 }
@@ -1057,8 +1542,66 @@ form a button[type="button"]:hover {
         width: 32%;
     }
 
+    .box-user {
+        width: 40%;
+    }
+
     #container-form {
         width: 70%;
+    }
+
+    .container-principal-PanelUser {
+        width: 90%;
+    }
+
+    .container-PanelUser {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .purchases-made {
+        margin: 0 5px;
+    }
+
+    .container-top-description-product {
+        width: 95%;
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+    }
+
+    .container-pay {
+        margin-left: 10px;
+    }
+
+    #container-principal-adm {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .caixa-panel-adm {
+        width: 40%;
+        margin: 5px;
+    }
+
+    form .preco-categoria {
+        width: 49%;
+    }
+
+    form .container-preco-categoria {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .container-btn-categorias {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .btn-categoria {
+        width: 49%;
     }
 
 }
@@ -1089,6 +1632,14 @@ form a button[type="button"]:hover {
 
     #container-form {
         width: 70%;
+    }
+
+    .image-big img {
+        width: 30%;
+    }
+
+    .container-principal-PanelUser {
+        width: 60%;
     }
 
 }
@@ -1125,177 +1676,8 @@ form a button[type="button"]:hover {
         width: 70%;
     }
 
-}
+    .container-principal-PanelUser {
+        width: 60%;
+    }
 
-
-
-/* ---------------------------------------
-Paginas de produtos */
-
-
-
-html {
-    font-family: Helvetica, Arial, sans-serif;
-}
-
-body {
-    width: 95%;
-    margin: 0 auto;
-    min-height: 100vh;
-    max-width: 100%;
-}
-
-main {
-    width: 100%;
-    margin: 0 auto;
-    min-height: 100vh;
-    max-width: 100%;
-    background-color: rgba(250, 244, 236, 0.685);
-}
-
-.containerPai-produtos {
-    color: black;
-    padding-top: 20px;
-}
-
-.container-principal1 {
-    padding-top: 30px;
-    display: flex;
-}
-
-.container-esquerdo2 {
-    display: flex;
-    flex-direction: column;
-    height: 180px;
-    width: 180px;
-}
-
-.imagens-menor1 {
-    margin: 2px;
-    border: 2px rgba(104, 22, 22, 0.404) dotted ;
-    border-radius: 10px;   
-}
-
-.imagens-menor1:hover {
-    background-color: #E70D91;;
-}
-
-.imagem-maior {
-    display: flex;
-    flex-direction: column;
-    height: 530px;
-    width: 530px;
-    margin-left: 5px;
-    border: 1px rgba(0, 0, 0, 0.158) solid ;
-    border-radius: 1px;
-}
-
-.container-direito2 {
-
-    display: block;
-    justify-content: end;
-    margin-left: 50px;
-    width: 100vh;
-    border: 1px rgba(0, 0, 0, 0.137) solid ;
-    border-radius: 10px;
-}
-
-.container-direito2 h1 {
-    display: flex;
-    justify-content: start;
-    padding-left: 45px;
-    font-size: 35px;
-}
-
-.container-direito2 ul {
-
-    font-size: 22px;
-    padding-left: 50px;
-}
-
-.btn-comprar button {
-    background-color: blueviolet;
-    color: white;
-    font-weight: bolder;
-    border: 1px solid;
-    border-radius: 4px;
-    width: 50%;
-    height: 4rem;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.btn-comprar {
-    display: flex;
-    justify-content: center;
-    margin-top: 10%;
-}
-
-.btn-comprar .calcular {
-    color: black;
-    width: 30%;
-    height: 4rem;
-    font-size: 20px;
-    background-color: white;
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-.comprar:hover {
-    background-color: rgb(4, 219, 15);
-}
-
- .calcular:hover {
-    background-color: rgb(164, 180, 165);
-}
-
-.desconto {
-    
-    font-size: 15px;
-    border: 1px blueviolet solid;
-    margin: 50px;
-    width: 75%;
-    padding: 10px;
-}
-
-.container-secundario2 {
-    color: black;
-}
-
-.container-secundario2 {
-    display: flex;
-}
-
-.descricao {
-    display: flex;
-    justify-content: center;
-    padding-top: 150px;
-}
-.descricao1 {
-    margin: 25px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid;
-    border-radius: 5px; 
-}
-
-
-.descricao2 {
-    margin: 25px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid;
-    border-radius: 5px; 
-}
-
-.ultimo-container {
-    margin: 25px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid;
-    border-radius: 5px;
-}
-
-.ultimo-container h1 {
-    font-size: 18px;
 }

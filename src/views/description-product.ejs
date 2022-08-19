@@ -1,0 +1,110 @@
+<%- include("./partials/head") %>
+    <%- include("./partials/header") %>
+        <main class="container-main">
+            <div class="container-product">
+                <div class="container-top-description-product">
+                    <div class="container-title-imageproduct">
+                        <h4>
+                            Active Giovanna Baby - Perfume Masculino Infantil 100ml
+                        </h4>
+
+                        <div class="container-view-product">
+                            <div class="image-big">
+                                <img src="/img/7.png" alt="">
+                            </div>
+                            <div class="view-img">
+                                <img src="/img/7.png" class="imagens-menor1" alt="">
+                                <img src="/img/7.png" class="imagens-menor1" alt="">
+                                <img src="/img/7.png" class="imagens-menor1" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-pay">
+                        <div>
+                            <h3>De R$190,90</h3>
+                            <h4>Em 8x de R$23,86 sem juros no cartão</h4>
+                        </div>
+
+                        <div class="btn-pay">
+                            <% if (locals.user) { %> 
+                            <a href="/product/payment">
+                                <button type="button">COMPRAR</button>
+                            </a>
+                            <% } else { %>
+                                <a href="/login">
+                                    <button type="button">COMPRAR</button>
+                                </a>
+                                <% } %>  
+                            <h4><img src="../../img/caminhao-bau.png" alt="">Chegará entre os dias 23 e 26 de agosto por
+                                R$ 13.71.</h4>
+                            <h4>Você também pode escolher uma das nossas lojas para fazer a retirada.</h4>
+                            <button type="button">Calcular Frete</button>
+                        </div>
+                        <div class="desconto">
+                            <h4>Oba, ganhe 5% OFF no Boleto Bancário ou no PIX!</h4>
+                            <h4>Selecione sua forma de pagamento e aproveite ;)</h4>
+                            <h4>Cupons, brindes e descontos não são acumulativos (verifique na finalização da compra).
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-description">
+                    <h3>Descrição do produto</h3>
+                    <section>
+                        <h4>ESPECIFICAÇÕES</h4>
+                        <h6>Gênero: Masculino</h6>
+                        <h6>Concentração: Deo Cologne</h6>
+                        <h6>Familia Olfativa: Amadeirado, Cítrico, Floral </h6>
+                        <h6>Notas de Fundo: Fava tonka</h6>
+                        <h6>Intensidade: Moderada</h6>
+                        <h6>Tempo de Fixação: Médio</h6>
+                        <h6>Ocasião: Dia</h6>
+                        <h6>Sazonalidade: Primavera</h6>
+                    </section>
+                    <section>
+                        <h4>SOBRE O PRODUTO</h4>
+                        <p>Fragrância composta por uma saída leve e transparente, da qual emerge um complexo de verbena
+                            e
+                            sálvia. Seu corpo foi elaborado com um delicioso acorde floral, com notas de musgo de
+                            carvalho e
+                            fava tonka, que resulta nesta criação moderna e surpreendente.</p>
+                        <p>Precauções:
+                            Evite contato com os olhos. Caso aconteça enxague abundantemente. Não aplicar sobre a pele
+                            ferida ou irritada. Em caso de irritação ou alergia, suspenda o uso e procure orientação
+                            médica.
+                            Manter fora do alcance das crianças. Uso externo.</p>
+                        <p>Modo de usar:
+                            Borrife na região que deseja perfumar do seu corpo. Dê preferência as áreas como punho,
+                            pulso e
+                            pescoço para privilegiar a difusão da fragrância.</p>
+                        <p>Sobre a marca:
+                            Em 1974, Giovanna Baby surgiu no mercado de produtos infantis com roupas que mesclavam
+                            estilo,
+                            design exclusivo e o sentimento gostoso de aconchego, do colo de mãe e da risada dos bebês.
+                            Com
+                            uma história de encantamento, a marca Giovanna Baby continua sendo referência em
+                            exclusividade e
+                            tradição: um objeto de desejo! Suas fragrâncias, inspiradas em bouquets internacionais,
+                            proporcionam deliciosas viagens pelos sentidos. Mais que idade ou classe social, o que
+                            define
+                            nosso público é a identificação que as mulheres têm com a nossa marca, capaz de oferecer
+                            produtos exclusivos, em um clima de magia e puro encantamento.</p>
+                    </section>
+
+                    <section>
+                        <h3>GARANTIA</h3>
+                        <h6>
+                            Todos os nossos produtos são 100% originais e distribuído por fornecedores oficiais de
+                            cada marca no Brasil. Saiba mais sobre porque é confiável comprar na Época Cosméticos.
+                        </h6>
+
+
+                    </section>
+                </div>
+
+            </div>
+        </main>
+
+        <%- include("./partials/footer") %>

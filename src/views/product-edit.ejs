@@ -1,21 +1,32 @@
 <%- include("./partials/head") %>
-    <%- include("./partials/header") %>
+    <%- include("./partials/header-adm") %>
+        <div class="way">
+            <h5><a href="/product/">Produto</a></h5>
+            <h5> - Atualizar produto</h5>
+        </div>
 
-        <main id="container">
-            <h1>Bem vindo ao painel administrativo</h1>
-            <h2>Atualizar produto</h2>
-            <% if(locals.error){ %>
-                <h2 class="error-alert">
-                    <%= error.message %>
-                </h2>
-                <% } %>
-                    <form action="/product/edit/<%= product.id %>?_method=put" method="post">
-                        <input value="<%= product.nome %>" type="text" name="nome" placeholder="Nome" />
-                        <input value="<%= product.descricao %>" type="text" name="descricao" placeholder="Descrição" />
-                        <input value="<%= product.preco %>" type="number" name="preco" placeholder="Preço" />
-                        <input value="<%= product.tamanho %>" type="text" name="tamanho" placeholder="Tamanho" />
-                        <button type="submit">Atualizar</button>
-                    </form>
+        <main class="container-main">
+            <section id="container-form">
+                <h2>Atualizar produto</h2>
+                <% if(locals.error){ %>
+                    <h2 class="error-alert">
+                        <%= error.message %>
+                    </h2>
+                    <% } %>
+                        <form action="/product/edit/<%= product.id %>?_method=put" method="post">
+                            <label for="nome">Nome:</label>
+                            <input value="<%= product.nome %>" type="text" name="nome" />
+                            <label for="nome">Descrição:</label>
+                            <input value="<%= product.descricao %>" type="text" name="descricao" />
+                            <label for="nome">Preço:</label>
+                            <input value="<%= product.preco %>" type="number" name="preco" />
+                            <label for="productImage">Imagem do produto:</label>
+                            <input value="<%= product.productImage %> " type="file" name="productImage" />
+
+                            <button type="submit">Atualizar</button>
+                        </form>
+
+            </section>
         </main>
 
-        <%- include('./partials/footer') %>
+        <%- include('./partials/footer-adm') %>
