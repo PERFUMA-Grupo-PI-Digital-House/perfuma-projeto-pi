@@ -20,7 +20,7 @@ router.put("/edit/:id",isAuth, productControlller.update);
 router.get("/delete/:id",isAuth, productControlller.delete);
 router.delete("/delete/:id",isAuth, productControlller.destroy);
 
-router.get("/description",isAuth, productControlller.viewProduct);
+router.get("/description", productControlller.viewProduct);
 
 router.get("/payment", isAuth, productControlller.viewPayment);
 

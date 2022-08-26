@@ -149,10 +149,17 @@ const userController = {
     }
 
     userResult.confirmar_senha = userResult.senha;
-    return res.render("user-edit", {
-      title: "Editar usuário",
-      user: userResult,
-    });
+    if (req.cookies.user.admin) {
+      return res.render("user-edit-adm", {
+        title: "Editar usuário",
+        user: userResult,
+      });
+    } else {
+      return res.render("user-edit", {
+        title: "Editar usuário",
+        user: userResult,
+      });
+    }
   },
 
   // Edita usuário

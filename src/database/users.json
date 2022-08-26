@@ -43,5 +43,17 @@
   "ativo": true,
   "criadoEm": "2022-08-10T19:31:07.831Z",
   "modificadoEm": "2022-08-10T19:31:07.831Z"
+ },
+ {
+  "id": 5,
+  "nome": "Carlos",
+  "sobrenome": "Emanoel",
+  "email": "carlos@gmail.com",
+  "senha": "$2b$10$xbyxmG.qWYnv6wXIY6/S3eOLMaJscA456wUeIJjyicoPkOzmQ.n.C",
+  "avatar": "user-default.jpeg",
+  "admin": false,
+  "ativo": true,
+  "criadoEm": "2022-08-26T12:40:46.639Z",
+  "modificadoEm": "2022-08-26T12:40:46.639Z"
  }
 ]
