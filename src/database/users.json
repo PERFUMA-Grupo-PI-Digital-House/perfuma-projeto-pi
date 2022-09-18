@@ -55,5 +55,16 @@
   "ativo": true,
   "criadoEm": "2022-08-26T12:40:46.639Z",
   "modificadoEm": "2022-08-26T12:40:46.639Z"
+ },
+ {
+  "id": 6,
+  "nome": "Gabriel ",
+  "sobrenome": "Oliveira",
+  "senha": "$2b$10$uUcfhs2apqRu85ND9kPYW.PXtWqPIkaVn5zYDhjjXX6f3flL8.bWy",
+  "email": "gabrieloliveirasantos196@gmail.com",
+  "admin": false,
+  "ativo": true,
+  "criadoEm": "2022-09-14T23:52:20.928Z",
+  "modificadoEm": "2022-09-14T23:52:20.928Z"
  }
 ]

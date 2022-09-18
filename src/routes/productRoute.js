@@ -26,6 +26,8 @@ router.get("/payment", isAuth, productControlller.viewPayment);
 
 router.get("/finish", isAuth, productControlller.viewFinishPayment);
 
+router.get("/finishPix", isAuth, productControlller.viewFinishPixPayment);
+
 router.get("/",isAuth, productControlller.index);
 router.get("/:id",isAuth, productControlller.show);
 
