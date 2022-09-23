@@ -3,7 +3,7 @@
         <main class="container-main">
             <section id="container-form">
                 <h2>Cadastrar</h2>
-                <form action="/register" method="post">
+                <form action="/register" method="post" enctype="multipart/form-data">
 
                     <label for="nome">Nome</label>
                     <input type="text" name="nome" value="<%= locals.old ? old.nome : null %>" />

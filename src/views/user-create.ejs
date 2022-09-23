@@ -6,67 +6,74 @@
         </div>
         <main class="container-main">
             <section id="container-form">
+                <h2>Cadastrar</h2>
+
                 <% if(locals.errors){ %>
                     <h2 class="error-alert">
-                      <%= errors.messagem %>
+                        <%= errors.message %>
                     </h2>
                     <% } %>
-                <h2>Cadastrar</h2>
-                <form action="/user/create" method="post" enctype="multipart/form-data">
 
-                    <label for="nome">Nome</label>
-                    <input type="text" name="nome" value="<%= locals.old ? old.nome : null %>" />
-                    <% if(locals.errors && errors.nome){ %>
-                        <div class="error-alert">
-                            <%= errors.nome.msg %>
+                        <div class="success-alert">
+                            <%= locals.message %>
                         </div>
-                        <% } %>
+                        <form action="/user/create" method="post" enctype="multipart/form-data">
 
-                            <label for="sobrenome">Sobrenome</label>
-                            <input type="text" name="sobrenome" value="<%= locals.old ? old.sobrenome : null %>">
-                            <% if(locals.errors && errors.sobrenome){ %>
+                            <label for="nome">Nome</label>
+                            <input type="text" name="nome" value="<%= locals.old ? old.nome : null %>" />
+                            <% if(locals.errors && errors.nome){ %>
                                 <div class="error-alert">
-                                    <%= errors.sobrenome.msg %>
+                                    <%= errors.nome.msg %>
                                 </div>
                                 <% } %>
 
-                                    <label for="email">E-mail</label>
-                                    <input type="email" name="email" value="<%= locals.old ? old.email : null %>" />
-                                    <% if(locals.errors && errors.email){ %>
+                                    <label for="sobrenome">Sobrenome</label>
+                                    <input type="text" name="sobrenome"
+                                        value="<%= locals.old ? old.sobrenome : null %>">
+                                    <% if(locals.errors && errors.sobrenome){ %>
                                         <div class="error-alert">
-                                            <%= errors.email.msg %>
+                                            <%= errors.sobrenome.msg %>
                                         </div>
                                         <% } %>
 
-                                            <label for="senha">Senha</label>
-                                            <input type="password" name="senha"
-                                                value="<%= locals.old ? old.senha : null %>">
-                                            <% if(locals.errors && errors.senha){ %>
+                                            <label for="email">E-mail</label>
+                                            <input type="email" name="email"
+                                                value="<%= locals.old ? old.email : null %>" />
+                                            <% if(locals.errors && errors.email){ %>
                                                 <div class="error-alert">
-                                                    <%= errors.senha.msg %>
+                                                    <%= errors.email.msg %>
                                                 </div>
                                                 <% } %>
 
-                                                    <label for="confirmar_senha">Confirmar senha</label>
-                                                    <input type="password" name="confirmar_senha"
-                                                        value="<%= locals.old ? old.confirmar_senha : null %>" />
-                                                    <% if(locals.errors && errors.confirmar_senha){ %>
+                                                    <label for="senha">Senha</label>
+                                                    <input type="password" name="senha"
+                                                        value="<%= locals.old ? old.senha : null %>">
+                                                    <% if(locals.errors && errors.senha){ %>
                                                         <div class="error-alert">
-                                                            <%= errors.confirmar_senha.msg %>
+                                                            <%= errors.senha.msg %>
                                                         </div>
                                                         <% } %>
 
-                                                            <label for="avatar">Avatar</label>
-                                                            <input type="file" name="avatar"
-                                                                value="<%= locals.old ? old.avatar : null %>" />
-                                                            <% if(locals.errors && errors.avatar){ %>
+                                                            <label for="confirmar_senha">Confirmar senha</label>
+                                                            <input type="password" name="confirmar_senha"
+                                                                value="<%= locals.old ? old.confirmar_senha : null %>" />
+                                                            <% if(locals.errors && errors.confirmar_senha){ %>
                                                                 <div class="error-alert">
-                                                                    <%= errors.avatar.msg %>
+                                                                    <%= errors.confirmar_senha.msg %>
                                                                 </div>
                                                                 <% } %>
 
-                                                            <button type="submit">Adicionar</button>
-                </form>
+                                                                    <label for="avatar">Avatar</label>
+                                                                    <input type="file" name="avatar"
+                                                                        value="<%= locals.old ? old.avatar : null %>" />
+                                                                    <% if(locals.errors && errors.avatar){ %>
+                                                                        <div class="error-alert">
+                                                                            <%= errors.avatar.msg %>
+                                                                        </div>
+                                                                        <% } %>
+
+                                                                            <button type="submit">Adicionar</button>
+                        </form>
             </section>
         </main>
         <%- include("./partials/footer-adm") %>

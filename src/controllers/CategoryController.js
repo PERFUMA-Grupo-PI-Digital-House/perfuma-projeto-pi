@@ -1,190 +1,296 @@
-const files = require("../helpers/files");
-const fs = require('fs');
-const { validationResult } = require('express-validator');
-const upload = require('../config/upload');
-const path = require('path');
-const fileName = path.join(__dirname, "..", "database", "category.json");
+const { validationResult } = require("express-validator");
 
+const Category = require("../models/Category");
+const Product = require("../models/Product");
+const Image = require("../models/Image");
 
 const categoryController = {
-    index: (req, res) => {
+  index: async (req, res) => {
+    try {
+      const { page = 1 } = req.query;
+      const { count: total, rows: categorys } = await Category.findAndCountAll({
+        attributes: ["id", "name", "description", "is_active"],
+        where: {
+          is_active: 1,
+        },
+        // include: {
+        //   model: Product,
+        //   required: true,
+        // },
+        limit: 6,
+        offset: (page - 1) * 6,
+        order: [["name", "ASC"]],
+      });
+      const totalPage = Math.round(total / 5);
 
-        const allCategorysJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
-        res.render('categorys', { 
-            title: "Categorias", 
-            listCategorys: allCategorysJson,
-            user: req.cookies.user,});
-    },
+      if (!categorys) {
+        throw Error("CATEGORY_NOT_FOUND");
+      }
 
-    show: (req, res) => {
-        const { id } = req.params;
-        const allCategorysJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
-        const categoryResult = allCategorysJson.find(category => category.id === parseInt(id));
-
-        if (!categoryResult) {
-            return res.render("not-found", {
-                title: "Erro",
-                message: "Erro ao encontar categoria",
-            });
-        }
-
-        return res.render("categorys", {
-            title: "Visualizar categoria",
-            category: categoryResult,
+      return res.render("categorys", {
+        title: "Lista de categorias",
+        listCategorys: categorys,
+        totalPage,
+        user: req.cookies.user,
+      });
+    } catch (error) {
+      if (error.message === "CATEGORY_NOT_FOUND") {
+        res.render("categorys", {
+          title: "Categoria",
+          message: "Nenhuma categoria encontrado",
         });
-    },
-    
-    create: (req, res) => {
-        // Salvar no banco
+      } else {
+        res.render("categorys", {
+          title: "Categoria",
+          message: "Erro ao encontrar as categorias",
+        });
+      }
+    }
+  },
+
+  show: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const category = await Category.findOne({
+        attributes: ["id", "name", "description", "is_active"],
+        where: {
+          id,
+        },
+        include: {
+          model: Product,
+          required: true,
+        },
+      });
+
+      if (!category) {
+        throw Error("CATEGORY_NOT_FOUND");
+      }
+
+      const productImageId = category.Products.map(product => product.image_id);
+      const products = await Product.findAll({
+        attributes: ["name", "description", "price", "is_active"],
+        where: {
+          image_id: productImageId,
+        },
+        include: {
+          model: Image,
+          required: true,
+        }
+      });
+      
+      products.map(product => {
+        console.log(product.Image.image);
+        //   product.Image.image = files.base64Encode(upload.path + product.Image.image);
+      });
+
+      
+      return res.render("products-category", {
+        title: "Visualizar categoria",
+        category,
+        listProducts: products,
+      });
+    } catch (error) {
+      if (error.message === "CATEGORY_NOT_FOUND") {
+        res.render("products-category", {
+          title: "Categoria",
+          message: "Cagoria não encontrado!",
+        });
+      } else {
+        res.render("products-category", {
+          title: "Categoria",
+          message: "Erro ao encontrar categoria!",
+        });
+      }
+    }
+  },
+
+  create: (req, res) => {
+    return res.render("category-create", {
+      title: "Cadastrar categoria",
+      user: req.cookies.user,
+    });
+  },
+
+  store: async (req, res) => {
+    const errors = validationResult(req);
+    const { nome, descricao } = req.body;
+
+    if (!errors.isEmpty()) {
+      return res.render("category-create", {
+        title: "Cadastrar categoria",
+        errors: errors.mapped(),
+        old: req.body,
+      });
+    }
+
+    try {
+      const categoryExists = await Category.findOne({
+        attributes: ["name"],
+        where: {
+          name: nome,
+        },
+      });
+
+      if (categoryExists) {
         return res.render("category-create", {
-            title: "Cadastrar categoria",
-            user: req.cookies.user,
+          title: "Error",
+          errors: {
+            nome: {
+              msg: "Esta categoria já está registrada",
+            },
+          },
+          old: req.body,
         });
-    },
+      }
+      const categorys = await Category.create({
+        name: nome,
+        description: descricao,
+      });
+      res.render("category-create", {
+        title: "Sucesso",
+        message: `Categoria ${categorys.name} foi cadastrado com sucesso!`,
+      });
+    } catch (error) {
+      res.render("category-create", {
+        title: "Erro",
+        message: "Erro ao cadastrar categoria!",
+      });
+    }
+  },
 
-    store: (req, res) => {
-        const errors = validationResult(req);
-        const allCategorysJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
+  edit: async (req, res) => {
+    const { id } = req.params;
 
-        const { nome, descricao } = req.body;
+    try {
+      const category = await Category.findOne({
+        attributes: ["id", "name", "description"],
+        where: {
+          id,
+        },
+      });
 
-        if (!errors.isEmpty()) {
-            return res.render("category-create", { title: "Cadastrar categoria", errors: errors.mapped(), old: req.body });
-        }
+      if (!category) {
+        throw Error("CATEGORY_NOT_FOUND");
+      }
 
-        const categoryExists = allCategorysJson.find(category => category.nome === nome);
-
-        if (categoryExists) {
-            return res.render('category-create', {
-                title: "Error",
-                errors: {
-                    nome: {
-                        msg: "Esta categoria já está registrada"
-                    }
-                },
-                old: req.body
-            });
-        }
-
-        const lastId = allCategorysJson.length != 0 ? allCategorysJson[allCategorysJson.length - 1].id + 1 : 1;
-
-        const newCategory = {
-            id: lastId,
-            nome,
-            descricao,
-            criadoEm: new Date(),
-            modificadoEm: new Date(),
-        };
-
-        allCategorysJson.push(newCategory);
-        fs.writeFileSync(
-            // Caminho e nome do arquivo que será criado/atualizado
-            fileName,
-            // Conteúdo que será salvo no arquivo
-            JSON.stringify(allCategorysJson, null, " ")
-        );
-
-        return res.redirect("/category");
-
-
-    },
-
-    edit: (req, res) => {
-        const { id } = req.params;
-        const allCategorysJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
-
-        const categoryResult = allCategorysJson.find(category => category.id === parseInt(id));
-        if (!categoryResult) {
-            return res.render("not-found", {
-                title: "Ops!",
-                message: "Nenhuma categoria encontrada",
-            });
-        }
-        return res.render("category-edit", {
-            title: "Editar categoria",
-            category: categoryResult,
+      return res.render("category-edit", {
+        title: "Editar categoria",
+        user: req.cookies.user,
+        category,
+      });
+    } catch (error) {
+      if (error.message === "CATEGORY_NOT_FOUND") {
+        res.render("category-edit", {
+          title: "Editar categoria",
+          message: "Nenhuma categoria encontrada",
         });
-    },
-
-    update: (req, res) => {
-        const { id } = req.params;
-        const { nome, descricao } = req.body;
-
-        const allCategorysJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
-        const categoryResult = allCategorysJson.find((category) => category.id === parseInt(id));
-
-        
-
-        if (!categoryResult) {
-            return res.render("not-found", {
-                title: "Ops!",
-                message: "Nenhuma categoria encontrada",
-            });
-        }
-
-        if (nome) categoryResult.nome = nome;
-        if (descricao) categoryResult.descricao = descricao;
-
-        categoryResult.modificadoEm = new Date();
-
-        fs.writeFileSync(
-            // Caminho e nome do arquivo que será criado/atualizado
-            fileName,
-            // Conteúdo que será salvo no arquivo
-            JSON.stringify(allCategorysJson, null, " ")
-        );
-
-        return res.render("success", {
-            title: "Categoria atualizada",
-            message: `Categoria ${categoryResult.nome} foi atualizada`,
+      } else {
+        res.render("category-edit", {
+          title: "Editar categoria",
+          message: "Erro ao editar categoria",
         });
-    },
+      }
+    }
+  },
 
-    delete: (req, res) => {
-        const { id } = req.params;
-        const allCategorysJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
-        const categoryResult = allCategorysJson.find((category) => category.id === parseInt(id));
-        if (!categoryResult) {
-            return res.render("not-found", {
-                title: "Ops!",
-                message: "Nenhuma categoria encontrada",
-            });
+  update: async (req, res) => {
+    const { id } = req.params;
+    const { nome, descricao } = req.body;
+
+    try {
+      const category = await Category.update(
+        {
+          name: nome,
+          description: descricao,
+        },
+        {
+          where: { id },
         }
+      );
 
-        return res.render("category-delete", {
-            title: "Deletar categoria",
-            category: categoryResult,
-            user: req.cookies.user,
+      if (!category) {
+        throw Error("CATEGORY_NOT_FOUND");
+      }
+
+      res.render("category-edit", {
+        title: "Sucesso",
+        message: `Categoria foi atualizado com sucesso!`,
+        user: req.cookies.user,
+        category,
+      });
+    } catch (error) {
+      if (error.message === "CATEGORY_NOT_FOUND") {
+        res.render("category-edit", {
+          title: "Categoria",
+          message: "Nenhuma categoria encontrada",
         });
-    },
-    // O método acima pode ser chamado de destroy
-    destroy: (req, res) => {
-        const { id } = req.params;
-        const allCategorysJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
-        const categoryResult = allCategorysJson.findIndex((category) => category.id === parseInt(id));
-        if (!categoryResult) {
-            return res.render("not-found", {
-                title: "Ops!",
-                message: "Nenhuma categoria encontrada",
-            });
+      } else {
+        res.render("category-edit", {
+          title: "Categoria",
+          message: "Erro ao editar categoria",
+        });
+      }
+    }
+  },
+
+  delete: async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      const category = await Category.findOne({
+        attributes: ["id", "name", "description"],
+        where: {
+          id,
+        },
+      });
+
+      if (!category) {
+        throw Error("CATEGORY_NOT_FOUND");
+      }
+
+      return res.render("category-delete", {
+        title: "Deletar categoria",
+        category,
+        user: req.cookies.user,
+      });
+    } catch (error) {
+      if (error.message === "CATEGORY_NOT_FOUND") {
+        res.render("category-delete", {
+          title: "Categoria",
+          errors: { message: "Nenhuma categoria encontrada" },
+        });
+      } else {
+        res.render("category-delete", {
+          title: "Categoria",
+          errors: { message: "Erro ao deletar categoria" },
+        });
+      }
+    }
+  },
+  // O método acima pode ser chamado de destroy
+  destroy: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const category = await Category.update(
+        {
+          is_active: 0,
+        },
+        {
+          where: { id },
         }
+      );
 
-        allCategorysJson.splice(categoryResult, 1);
-
-        fs.writeFileSync(
-            // Caminho e nome do arquivo que será criado/atualizado
-            fileName,
-            // Conteúdo que será salvo no arquivo
-            JSON.stringify(allCategorysJson, null, " ")
-        );
-
-        return res.render("success", {
-            title: "Categoria deletada",
-            message: "Categoria deletada com sucesso!",
-        });
-    },
-
+      return res.render("category-delete", {
+        title: "Categoria deletada",
+        message: "Categoria deletado com sucesso!",
+      });
+    } catch (error) {
+      res.render("category-delete", {
+        title: "Categoria",
+        errors: { message: "Erro ao deletar categoria" },
+      });
+    }
+  },
 };
-
 
 module.exports = categoryController;

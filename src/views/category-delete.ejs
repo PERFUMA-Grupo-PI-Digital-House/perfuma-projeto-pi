@@ -1,0 +1,36 @@
+<%- include("./partials/head")%>
+    <%- include("./partials/header-adm")%>
+        <div class="way">
+            <h5><a href="/category/">Categoria</a></h5>
+            <h5> - Deletar categoria</h5>
+        </div>
+        <main class="container-main">
+            <section id="container-form">
+
+                <% if(locals.category){ %>
+                    <div class="box-category">
+                        <div class="nome-category">
+                            <h3>
+                                <%= category.name %>
+                            </h3>
+                        </div>
+                        <div class="description-category">
+                            <h4>Descrição:</h4>
+                            <h5>
+                                <%= category.description %>
+                            </h5>
+                        </div>
+                    </div>
+
+
+                    <form class="form-delete" action="/category/delete/<%= category.id %>?_method=delete" method="post">
+                        <h3>Deseja deletar essa categoria?</h3>
+                        <a href="/category"><button type="button">Não</button></a>
+                        <button type="submit">Sim</button>
+                    </form>
+                    <% }else {%>
+                        <h2 class="error-alert">Categoria não encontrada!</h2>
+                        <% } %>
+            </section>
+        </main>
+        <%- include("./partials/footer-adm")%>

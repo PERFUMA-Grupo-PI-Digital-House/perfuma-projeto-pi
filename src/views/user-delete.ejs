@@ -1,45 +1,79 @@
-<%- include("./partials/head")%>
-    <%- include("./partials/header-adm")%>
+<%- include("./partials/head") %>
+    <%- include("./partials/header-adm") %>
         <div class="way">
             <h5><a href="/user/">Cliente</a></h5>
-            <h5> - Deletar cliente</h5>
+            <h5> - Cadastrar cliente</h5>
         </div>
         <main class="container-main">
             <section id="container-form">
+                <h2>Cadastrar</h2>
 
-                <% if(locals.user){ %>
-                    <div class="box-user">
-                        <div class="img-user">
-                            <img src=" <%= user.avatar %> " alt="avatar">
-                        </div>
-                        <div class="user-name">
-                            <h4>Nome:</h4>
-                            <h4>
-                                <%= user.nome %>
-                            </h4>
-                        </div>
-                        <div class="user-sobrenome">
-                            <h4>Sobrenome:</h4>
-                            <h4>
-                                <%= user.sobrenome %>
-                            </h4>
-                        </div>
-                        <div class="user-email-delete">
-                            <h4>E-mail:</h4>
-                            <h4>
-                                <%= user.email %>
-                            </h4>
-                        </div>
-                    </div>
+                <% if(locals.errors){ %>
+                    <h2 class="error-alert">
+                        <%= errors.message %>
+                    </h2>
+                    <% } %>
 
-                    <form class="form-delete" action="/user/delete/<%= user.id %>?_method=delete" method="post">
-                        <h3>Deseja deletar esse usuário?</h3>
-                        <a href="/user"><button type="button">Não</button></a>
-                        <button type="submit">Sim</button>
-                    </form>
-                    <% }else {%>
-                        <h2 class="error-alert">Usuário não encontrado!</h2>
-                        <% } %>
+                        <div class="success-alert">
+                            <%= locals.message %>
+                        </div>
+                        <form action="/user/create" method="post" enctype="multipart/form-data">
+
+                            <label for="nome">Nome</label>
+                            <input type="text" name="nome" value="<%= locals.old ? old.nome : null %>" />
+                            <% if(locals.errors && errors.nome){ %>
+                                <div class="error-alert">
+                                    <%= errors.nome.msg %>
+                                </div>
+                                <% } %>
+
+                                    <label for="sobrenome">Sobrenome</label>
+                                    <input type="text" name="sobrenome"
+                                        value="<%= locals.old ? old.sobrenome : null %>">
+                                    <% if(locals.errors && errors.sobrenome){ %>
+                                        <div class="error-alert">
+                                            <%= errors.sobrenome.msg %>
+                                        </div>
+                                        <% } %>
+
+                                            <label for="email">E-mail</label>
+                                            <input type="email" name="email"
+                                                value="<%= locals.old ? old.email : null %>" />
+                                            <% if(locals.errors && errors.email){ %>
+                                                <div class="error-alert">
+                                                    <%= errors.email.msg %>
+                                                </div>
+                                                <% } %>
+
+                                                    <label for="senha">Senha</label>
+                                                    <input type="password" name="senha"
+                                                        value="<%= locals.old ? old.senha : null %>">
+                                                    <% if(locals.errors && errors.senha){ %>
+                                                        <div class="error-alert">
+                                                            <%= errors.senha.msg %>
+                                                        </div>
+                                                        <% } %>
+
+                                                            <label for="confirmar_senha">Confirmar senha</label>
+                                                            <input type="password" name="confirmar_senha"
+                                                                value="<%= locals.old ? old.confirmar_senha : null %>" />
+                                                            <% if(locals.errors && errors.confirmar_senha){ %>
+                                                                <div class="error-alert">
+                                                                    <%= errors.confirmar_senha.msg %>
+                                                                </div>
+                                                                <% } %>
+
+                                                                    <label for="avatar">Avatar</label>
+                                                                    <input type="file" name="avatar"
+                                                                        value="<%= locals.old ? old.avatar : null %>" />
+                                                                    <% if(locals.errors && errors.avatar){ %>
+                                                                        <div class="error-alert">
+                                                                            <%= errors.avatar.msg %>
+                                                                        </div>
+                                                                        <% } %>
+
+                                                                            <button type="submit">Adicionar</button>
+                        </form>
             </section>
         </main>
-        <%- include("./partials/footer-adm")%>
+        <%- include("./partials/footer-adm") %>

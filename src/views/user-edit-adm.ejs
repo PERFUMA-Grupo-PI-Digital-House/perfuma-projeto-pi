@@ -1,9 +1,11 @@
 <%- include("./partials/head") %>
+
     <%- include("./partials/header-adm") %>
         <div class="way">
             <h5><a href="/user/">Cliente</a></h5>
             <h5> - Atualizar cliente</h5>
         </div>
+
         <main class="container-main">
             <section id="container-form">
                 <h2>Atualizar usuário</h2>
@@ -12,22 +14,25 @@
                         <%= error.message %>
                     </h2>
                     <% } %>
-                        <form action="/user/edit/<%= user.id %>?_method=put" method="post"
-                            enctype="multipart/form-data">
+
+                        <div class="success-alert">
+                            <%= locals.message %>
+                        </div>
+                        <form action="/user/edit/<%= users.id %>?_method=put" method="post" enctype="multipart/form-data">
                             <label for="nome">Nome</label>
-                            <input value="<%= user.nome %>" type="text" name="nome" />
+                            <input value="<%= users.name %>" type="text" name="nome" />
 
                             <label for="sobrenome">Sobrenome</label>
-                            <input value="<%= user.sobrenome %>" type="text" name="sobrenome" />
+                            <input value="<%= users.last_name %>" type="text" name="sobrenome" />
 
                             <label for="email">E-mail</label>
-                            <input value="<%= user.email %>" type="email" name="email" />
+                            <input value="<%= users.email %>" type="email" name="email" />
 
                             <label for="senha">Senha</label>
-                            <input value="<%= user.senha %>" type="password" name="senha" />
+                            <input value="<%= users.password %>" type="password" name="senha" />
 
                             <label for="confirmar_senha">Confirmar senha</label>
-                            <input value="<%= user.confirmar_senha %>" type="password" name="confirmar_senha" />
+                            <input value="<%= users.password %>" type="password" name="confirmar_senha" />
 
                             <label for="avatar">Avatar</label>
                             <input type="file" name="avatar" placeholder="Número do Avatar" />

@@ -1,5 +1,6 @@
 <%- include("./partials/head") %>
     <%- include("./partials/header") %>
+
         <main class="container-main">
             <section id="container-form">
                 <h2>Atualizar usuário</h2>
@@ -8,28 +9,32 @@
                         <%= error.message %>
                     </h2>
                     <% } %>
-                        <form action="/user/edit/<%= user.id %>?_method=put" method="post"
-                            enctype="multipart/form-data">
-                            <label for="nome">Nome</label>
-                            <input value="<%= user.nome %>" type="text" name="nome" />
 
-                            <label for="sobrenome">Sobrenome</label>
-                            <input value="<%= user.sobrenome %>" type="text" name="sobrenome" />
+                        <div class="success-alert">
+                            <%= locals.message %>
+                        </div>
+                        <form action="/user/edit/<%= users.id %>?_method=put" method="post" enctype="multipart/form-data">
+                            
+                                <label for="nome">Nome</label>
+                                <input value="<%= users.name %>" type="text" name="nome" />
 
-                            <label for="email">E-mail</label>
-                            <input value="<%= user.email %>" type="email" name="email" />
+                                <label for="sobrenome">Sobrenome</label>
+                                <input value="<%= users.last_name %>" type="text" name="sobrenome" />
 
-                            <label for="senha">Senha</label>
-                            <input value="<%= user.senha %>" type="password" name="senha" />
+                                <label for="email">E-mail</label>
+                                <input value="<%= users.email %>" type="email" name="email" />
 
-                            <label for="confirmar_senha">Confirmar senha</label>
-                            <input value="<%= user.confirmar_senha %>" type="password" name="confirmar_senha" />
+                                <label for="senha">Senha</label>
+                                <input value="<%= users.password %>" type="password" name="senha" />
 
-                            <label for="avatar">Avatar</label>
-                            <input type="file" name="avatar" placeholder="Número do Avatar" />
+                                <label for="confirmar_senha">Confirmar senha</label>
+                                <input value="<%= users.password %>" type="password" name="confirmar_senha" />
 
-                            <button type="submit">Atualizar</button>
+                                <label for="avatar">Avatar</label>
+                                <input type="file" name="avatar" placeholder="Número do Avatar" />
+
+                                <button type="submit">Atualizar</button>
                         </form>
             </section>
         </main>
-        <%- include("./partials/footer") %>
+        <%- include("./partials/footer-adm") %>

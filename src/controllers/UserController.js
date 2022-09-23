@@ -1,98 +1,153 @@
+const fs = require("fs");
 const files = require("../helpers/files");
-const fs = require('fs');
-const { validationResult } = require('express-validator');
-const bcrypt = require('bcrypt');
-const upload = require('../config/upload');
-const path = require('path');
-const fileName = path.join(__dirname, "..", "database", "users.json");
+const { validationResult } = require("express-validator");
+const bcrypt = require("bcrypt");
+const upload = require("../config/upload");
 
+// Configuração para conexão com o banco de dados
+const db = require("../config/sequelize");
+const User = require("../models/User");
+const Order = require("../models/Order");
+const Product = require("../models/Product");
+const Image = require("../models/Image");
+const { Op } = require("sequelize");
 
 const userController = {
-
   // Lista todos os usuário
   // Pode retornar uma página ou não
-  index: (req, res) => {
-    const allUsersJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
-    // Filtra os usuários ativos
-    const usersActive = allUsersJson.filter(user => user.ativo === true);
-    return res.render('users', {
-      title: 'Lista de usuários',
-      listUsers: usersActive,
-      user: req.cookies.user,
-    });
+  index: async (req, res) => {
+    try {
+      const { page = 1 } = req.query;
+      const { count: total, rows: users } = await User.findAndCountAll({
+        attributes: ["id", "name", "last_name", "email", "image", "is_admin"],
+        where: {
+          is_active: 1,
+        },
+        limit: 6,
+        offset: (page - 1) * 6,
+        order: [["name", "ASC"]],
+      });
+      const totalPage = Math.round(total / 5);
+
+      if (!users) {
+        throw Error("USER_NOT_FOUND");
+      }
+
+      users.map((user) => {
+        if (user.image) {
+          user.image = files.base64Encode(upload.path + user.image);
+        }
+      });
+
+      return res.render("users", {
+        title: "Lista de usuários",
+        listUsers: users,
+        totalPage,
+        user: req.cookies.user,
+      });
+    } catch (error) {
+      if (error.message === "USER_NOT_FOUND") {
+        res.render("users", {
+          title: "Usuários",
+          message: "Nenhum usuário encontrado",
+        });
+      } else {
+        res.render("users", {
+          title: "Usuários",
+          message: "Erro ao encontrar os usuário",
+        });
+      }
+    }
   },
   // Mostra um usuário
   // Pode retornar uma página ou não
-  show: (req, res) => {
-    // Pega o parametro que vem da url, ou seja, na url a baixo, pegaria o valor 4
-    // localhost:3000/user/4
-    // id = 4
+  show: async (req, res) => {
     const { id } = req.params;
-    const allUsersJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
-    const userResult = allUsersJson.find(user => user.id === parseInt(id));
-
-    if (!userResult) {
-      return res.render("not-found", {
-        title: "Ops!",
-        message: "Usuário não encontrado",
+    try {
+      const user = await User.findOne({
+        attributes: ["id", "name", "last_name", "email", "password", "image"],
+        where: {
+          id,
+        },
+        include: {
+          model: Order,
+          required: true,
+        },
       });
+
+      const orders = await Order.findAll({
+        attributes: ["id", "status", "created_at", "user_id"],
+        where: {
+          user_id: user.id,
+        },
+        include: {
+          model: Product,
+          required: true,
+        },
+      });
+
+
+      const idsImage = orders.map((order) =>
+        order.Products.map((product) => product.image_id)
+      );
+
+      const products = await Product.findAll({
+        where: {
+          image_id: idsImage,
+        },
+        include: {
+          model: Image,
+          required: true,
+        },
+      });
+
+      if (!user) {
+        throw Error("USER_NOT_FOUND");
+      }
+
+      user.image = files.base64Encode(upload.path + user.image);
+
+      return res.render("user-panel", {
+        title: "Visualizar usuário",
+        user,
+        listOrders: orders,
+      });
+    } catch (error) {
+      if (error.message === "USER_NOT_FOUND") {
+        res.render("user-panel", {
+          title: "Visualizar usuário",
+          message: "Usuário não encontrado!",
+        });
+      } else {
+        res.render("user-panel", {
+          title: "Visualizar usuário",
+          message: "Erro ao encontrar usuário!",
+        });
+      }
     }
-
-    const user = {
-      ...userResult,
-      avatar: files.base64Encode(upload.path + userResult.avatar),
-    };
-
-    return res.render("user-panel", {
-      title: "Visualizar usuário",
-      user,
-    });
   },
 
   // Página para criar usuário
   create: (req, res) => {
-    return res.render("user-create", { title: "Cadastrar usuário", user: req.cookies.user, });
+    return res.render("user-create", {
+      title: "Cadastrar usuário",
+      user: req.cookies.user,
+    });
   },
   // Cria usuário
   // Não retorna página
-  store: (req, res) => {
+  store: async (req, res) => {
     const errors = validationResult(req);
-    const allUsersJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
-
     const { nome, sobrenome, email, senha, confirmar_senha } = req.body;
 
-
-    // Verifica se os campos foram preenchidos corretamente
     if (!errors.isEmpty()) {
-      fs.unlinkSync(upload.path + req.file.filename);
-      return res.render("user-create", { title: "Cadastrar usuário", errors: errors.mapped(), old: req.body });
-    }
-
-    // Verifica se o email já está cadastrado
-    const userExists = allUsersJson.find(user => user.email === email);
-
-    if (userExists) {
-      return res.render('user-create', {
-        title: "Error",
-        errors: {
-          email: {
-            msg: "Este email já está registrado"
-          }
-        },
-        old: req.body
-      });
-    }
-
-    // Verifica se a senha realmente está correta 
-    if (senha !== confirmar_senha) {
-      return res.render('user-create', {
-        title: "Error",
-        errors: {
-          confirmar_senha: {
-            msg: "Senhas não coincidem",
-          }
-        },
-        old: req.body
+      if (req.file) {
+        fs.unlinkSync(upload.path + req.file.filename);
+      }
+      return res.render("user-create", {
+        title: "Cadastrar usuário",
+        errors: errors.mapped(),
+        old: req.body,
       });
     }
 
@@ -104,187 +159,273 @@ const userController = {
       filename = req.file.filename;
     }
 
-    // Atribui 1 se não tiver nenhum usuário cadastrado, caso contrario ele pega o valor do último usuário e acrescenta + 1 
-    const lastId = allUsersJson.length != 0 ? allUsersJson[allUsersJson.length - 1].id + 1 : 1;
-
-    // Objeto com dados do novo usuário
-    const newUser = {
-      id: lastId,
-      nome,
-      sobrenome,
-      email,
-      senha: bcrypt.hashSync(req.body.senha, 10),
-      avatar: filename,
-      admin: false,
-      ativo: true,
-      criadoEm: new Date(),
-      modificadoEm: new Date(),
-    };
-
-    allUsersJson.push(newUser);
-    fs.writeFileSync(
-      // Caminho e nome do arquivo que será criado/atualizado
-      fileName,
-      // Conteúdo que será salvo no arquivo
-      JSON.stringify(allUsersJson, null, " ")
-    );
-
-
-    return res.redirect("/login");
-  },
-
-  // Página para editar usuário
-  edit: (req, res) => {
-    const { id } = req.params;
-
-    const allUsersJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
-    const userResult = allUsersJson.find(user => user.id === parseInt(id));
-    // const userResult = users.find((user) => user.id.toString() === id);
-
-    if (!userResult) {
-      return res.render("not-found", {
-        title: "Ops!",
-        message: "Nenhum usuário encontrado",
+    // Verifica se a senha realmente está correta
+    if (senha !== confirmar_senha) {
+      return res.render("user-create", {
+        title: "Error",
+        errors: {
+          confirmar_senha: {
+            msg: "Senhas não coincidem",
+          },
+        },
+        old: req.body,
       });
     }
 
-    userResult.confirmar_senha = userResult.senha;
-    if (req.cookies.user.admin) {
-      return res.render("user-edit-adm", {
-        title: "Editar usuário",
-        user: userResult,
+    try {
+      const senhaBcrypt = await bcrypt.hashSync(req.body.senha, 10);
+      const userExists = await User.findOne({
+        attributes: ["email"],
+        where: {
+          email: email,
+        },
       });
-    } else {
-      return res.render("user-edit", {
-        title: "Editar usuário",
-        user: userResult,
+
+      if (userExists) {
+        return res.render("user-create", {
+          title: "Error",
+          errors: {
+            email: {
+              msg: "Este email já está registrado",
+            },
+          },
+          old: req.body,
+        });
+      }
+
+      const users = await User.create({
+        name: nome,
+        last_name: sobrenome,
+        email,
+        password: senhaBcrypt,
+        image: filename,
       });
+      res.render("user-create", {
+        title: "Sucesso",
+        message: `Usuário ${users.name} foi cadastrado com sucesso!`,
+      });
+    } catch (error) {
+      res.render("user-create", {
+        title: "Erro",
+        message: "Erro ao cadastrar usuário!",
+      });
+    }
+  },
+
+  // Página para editar usuário
+  edit: async (req, res) => {
+    const { id } = req.params;
+
+    try {
+      const users = await User.findOne({
+        attributes: ["id", "name", "last_name", "email", "password", "image"],
+        where: {
+          id,
+        },
+      });
+
+      if (!users) {
+        throw Error("USER_NOT_FOUND");
+      }
+
+      if (req.cookies.user.is_admin === 1) {
+        return res.render("user-edit-adm", {
+          title: "Editar usuário",
+          user: req.cookies.user,
+          users,
+        });
+      } else {
+        return res.render("user-edit", {
+          title: "Editar usuário",
+          user: req.cookies.user,
+          users,
+        });
+      }
+    } catch (error) {
+      if (error.message === "USER_NOT_FOUND") {
+        res.render("user-edit", {
+          title: "Usuários",
+          message: "Nenhum usuário encontrado",
+        });
+      } else {
+        res.render("user-edit", {
+          title: "Usuários",
+          message: "Erro ao editar os usuário",
+        });
+      }
     }
   },
 
   // Edita usuário
   // Não retorna página
-  update: (req, res) => {
+  update: async (req, res) => {
     const { id } = req.params;
     const { nome, sobrenome, email, senha, confirmar_senha } = req.body;
-
-    const allUsersJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
-    const userResult = allUsersJson.find(user => user.id === parseInt(id));
 
     let filename;
     if (req.file) {
       filename = req.file.filename;
     }
 
-    if (!userResult) {
-      return res.render("not-found", {
-        title: "Ops!",
-        message: "Nenhum usuário encontrado",
-      });
-    }
-
-    // Verifica se a senha realmente está correta 
+    // Verifica se a senha realmente está correta
     if (senha !== confirmar_senha) {
-      return res.render('user-create', {
+      return res.render("user-create", {
         title: "Error",
         errors: {
           confirmar_senha: {
             msg: "Senhas não coincidem",
-          }
+          },
         },
-        old: req.body
+        old: req.body,
       });
     }
 
-    // Salvando as alterações n0 id encontrado do userResult
-    if (nome) userResult.nome = nome;
-    if (sobrenome) userResult.sobrenome = sobrenome;
-    if (email) userResult.email = email;
-    if (senha) userResult.senha = senha;
-    if (filename) {
-      let avatarTmp = userResult.avatar;
-      fs.unlinkSync(upload.path + avatarTmp);
-      userResult.avatar = filename;
+    try {
+      const users = await User.update(
+        {
+          name: nome,
+          last_name: sobrenome,
+          email,
+          password: senha,
+          image: filename,
+        },
+        {
+          where: { id },
+        }
+      );
+      if (req.cookies.user.admin) {
+        return res.render("user-edit-adm", {
+          title: "Editar usuário",
+          user: req.cookies.user,
+          users,
+          message: `Usuário atualizado com sucesso!`,
+        });
+      } else {
+        return res.render("user-edit", {
+          title: "Usuário Atualizado",
+          user: req.cookies.user,
+          users,
+          message: `Usuário atualizado com sucesso!`,
+        });
+      }
+    } catch (error) {
+      res.render("user-edit", {
+        title: "Usuários",
+        errors: {
+          message: "Erro ao editar os usuário",
+        },
+      });
     }
-    userResult.modificadoEm = new Date();
-
-    fs.writeFileSync(
-      // Caminho e nome do arquivo que será criado/atualizado
-      fileName,
-      // Conteúdo que será salvo no arquivo
-      JSON.stringify(allUsersJson, null, " ")
-    );
-
-    return res.render("success", {
-      title: "Usuário atualizado",
-      message: `Usuário ${userResult.nome} foi atualizado`,
-    });
   },
 
   // Deleta usuário
   // Não retorna página
-  delete: (req, res) => {
+  delete: async (req, res) => {
     const { id } = req.params;
-    const allUsersJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
-    const userResult = allUsersJson.find(user => user.id === parseInt(id));
-    // const userResult = users.find((user) => user.id.toString() === id);
-    if (!userResult) {
-      return res.render("not-found", {
-        title: "Ops!",
-        message: "Nenhum usuário encontrado",
+    try {
+      const users = await User.findOne({
+        attributes: ["id", "name", "last_name", "email", "password", "image"],
+        where: {
+          id,
+        },
+      });
+
+      if (!users) {
+        throw Error("USER_NOT_FOUND");
+      }
+
+      users.image = files.base64Encode(upload.path + users.image);
+
+      return res.render("user-delete", {
+        title: "Deletar usuário",
+        users,
+        user: req.cookies.user,
+      });
+    } catch (error) {
+      if (error.message === "USER_NOT_FOUND") {
+        res.render("user-delete", {
+          title: "Usuários",
+          errors: { message: "Nenhum usuário encontrado" },
+        });
+      } else {
+        res.render("user-delete", {
+          title: "Usuários",
+          errors: { message: "Erro ao deletar usuário" },
+        });
+      }
+    }
+  },
+
+  // O método acima pode ser chamado de destroy
+  destroy: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const user = await User.update(
+        {
+          is_active: 0,
+        },
+        {
+          where: { id },
+        }
+      );
+
+      return res.render("user-delete", {
+        title: "Usuário deletado",
+        message: "Usuário deletado com sucesso!",
+      });
+    } catch (error) {
+      res.render("user-delete", {
+        title: "Usuários",
+        errors: { message: "Erro ao deletar usuário" },
       });
     }
-    const user = {
-      ...userResult,
-      avatar: files.base64Encode(upload.path + userResult.avatar),
-    };
-    return res.render("user-delete", {
-      title: "Deletar usuário",
-      user,
+  },
+
+  profile: (req, res) => {
+    return res.render("user-panel", {
+      title: "Perfil",
       user: req.cookies.user,
     });
   },
 
-  // O método acima pode ser chamado de destroy
-  destroy: (req, res) => {
-    const { id } = req.params;
-    const allUsersJson = JSON.parse(fs.readFileSync(fileName, 'utf-8'));
-    const userResult = allUsersJson.find(user => user.id === parseInt(id));
-    if (!userResult) {
-      return res.render("not-found", {
-        title: "Ops!",
-        message: "Nenhum usuário encontrado",
+  search: async (req, res) => {
+    try {
+      const { page = 1, key } = req.query;
+      const { count: total, rows: users } = await User.findAndCountAll({
+        attributes: ["id", "name", "last_name", "email", "image", "is_admin"],
+        where: {
+          name: { [Op.like]: `%${key}%` },
+        },
+        limit: 6,
+        offset: (page - 1) * 6,
+        order: [["name", "ASC"]],
       });
+
+      const totalPage = Math.round(total / 5);
+
+      if (!users) {
+        throw Error("USER_NOT_FOUND");
+      }
+
+      return res.render("users", {
+        title: "Lista de usuários",
+        listUsers: users,
+        totalPage,
+        user: req.cookies.user,
+      });
+    } catch (error) {
+      if (error.message === "USER_NOT_FOUND") {
+        res.render("users", {
+          title: "Usuários",
+          errors: { message: "Nenhum usuário encontrado" },
+        });
+      } else {
+        res.render("users", {
+          title: "Usuários",
+          errors: { message: "Erro ao encontrar os usuário" },
+        });
+      }
     }
-    // Torna o usuário inativo
-    userResult.ativo = false;
-
-    fs.writeFileSync(
-      // Caminho e nome do arquivo que será criado/atualizado
-      fileName,
-      // Conteúdo que será salvo no arquivo
-      JSON.stringify(allUsersJson, null, " ")
-    );
-
-    // fs.unlinkSync(upload.path + userResult.avatar);
-    // allUsersJson.splice(userResult, 1);
-
-    // fs.writeFileSync(
-    //   // Caminho e nome do arquivo que será criado/atualizado
-    //   fileName,
-    //   // Conteúdo que será salvo no arquivo
-    //   JSON.stringify(allUsersJson, null, " ")
-    // );
-
-    return res.render("success", {
-      title: "Usuário deletado",
-      message: "Usuário deletado com sucesso!",
-    });
   },
-
-  profile: (req, res) => {
-    return res.render("user-panel", { title: "Perfil", user: req.cookies.user, });
-  },
-
 };
 module.exports = userController;

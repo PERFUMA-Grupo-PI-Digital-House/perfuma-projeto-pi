@@ -1,67 +1,66 @@
-<%- include("./partials/head") %>
+<%- include("./partials/head") %> <%- include("./partials/header-adm") %>
 
-    <%- include("./partials/header-adm") %>
+<main id="container-principal-product">
+  <div class="way">
+    <h5>Produtos</h5>
+  </div>
+  <div class="add-item">
+    <form action="/product/create" method="get">
+      <button type="submit">Adicionar</button>
+    </form>
+  </div>
 
-        <main id="container-principal-product">
-            <div class="way">
-                <h5>Produtos</h5>
-            </div>
-            <div class="add-item">
-                <form action="/product/create" method="get">
-                    <button type="submit">Adicionar</button>
-                </form>
-            </div>
+  <div class="in-table">
 
-            <div class="in-table">
+    <form action="/product/search" method="get">
+            <input type="search" name="key" id="search" placeholder="Pesquisar...">
+            <img src="/img/lupa.png" alt="">
+            <button type="submit"></button>
+    </form>
 
-                <input type="search" name="" id="" placeholder="Pesquisar...">
-                <img src="/img/lupa.png" alt="">
+</div>
 
-            </div>
 
-            <% if(listProducts.length> 0) { %>
-                <div class="table">
+  <% if(listProducts.length > 0) { %>
+  <div class="table">
+    <% for (let product of listProducts) { %>
+    <div class="box">
+      <div class="img-product">
+        <img src=" <%= product.Image.image %> " alt="" />
+        <div class="name-product">
+          <h3><%= product.name %></h3>
+        </div>
+      </div>
+      <div class="description">
+        <h4>Descrição:</h4>
+        <h5><%= product.description %></h5>
+      </div>
+      <div class="category">
+        <h4>Categoria:</h4>
+        <h5><%= product.Category.name %></h5>
+      </div>
+      <div class="price">
+        <h4>Preço:</h4>
+        <h5><%= product.price %></h5>
+      </div>
+      <div class="btn-product">
+        <a href="/product/edit/<%= product.id %>">
+          <button type="button">
+            <img src="/img/pen.png" alt="" />
+          </button>
+        </a>
+        <a href="/product/delete/<%= product.id %>">
+          <button type="button">
+            <img src="/img/lata-de-lixo.png" alt="" />
+          </button>
+        </a>
+      </div>
+    </div>
+    <% } %>
+  </div>
+  <% } else { %>
+  <h2 class="error-alert">Nenhum produto encontrado!!</h2>
+  <% } %> <%- include("./partials/pagination") %>
+</main>
 
-                    <% for (let product of listProducts) { %>
-                        <div class="box">
-                            <div class="img-product">
-                                <img src=" <%= product.imageProduct %> " alt="">
-                                <div class="name-product">
-                                    <h3>
-                                        <%= product.nome %>
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="description">
-                                <h4>Descrição:</h4>
-                                <h5>
-                                    <%= product.descricao %>
-                                </h5>
-                            </div>
-                            <div class="price">
-                                <h4>Preço:</h4>
-                                <h5>R$ <%= product.preco %>
-                                </h5>
-                            </div>
-                            <div class="btn-product">
-                                <a href="/product/edit/<%= product.id %>">
-                                    <button type="button">
-                                        <img src="/img/pen.png" alt="">
-                                    </button>
-                                </a>
-                                <a href="/product/delete/<%= product.id %>">
-                                    <button type="button">
-                                        <img src="/img/lata-de-lixo.png" alt="">
-                                    </button>
-                                </a>
-                            </div>
-                        </div>
-                        <% } %>
-
-                </div>
-                <% } else { %>
-                    <h2 class="error-alert">Nenhum produto encontrado!!</h2>
-                    <% } %>
-        </main>
-
-        <%- include("./partials/footer-adm") %>
+<%- include("./partials/footer-adm") %>

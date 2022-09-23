@@ -1,0 +1,30 @@
+<%- include("./partials/head")%>
+    <%- include("./partials/header-adm")%>
+        <div class="way">
+            <h5><a href="/category/">Pedido</a></h5>
+            <h5> - Deletar pedido</h5>
+        </div>
+        <main class="container-main">
+            <section id="container-form">
+
+                <% if(locals.order){ %>
+                    <div class="box-category">
+                        <div class="nome-category">
+                            <h3>
+                                <%= order.status %>
+                            </h3>
+                        </div>
+                    </div>
+
+
+                    <form class="form-delete" action="/order/delete/<%= order.id %>?_method=delete" method="post">
+                        <h3>Deseja deletar esse pedido?</h3>
+                        <a href="/order"><button type="button">Não</button></a>
+                        <button type="submit">Sim</button>
+                    </form>
+                    <% }else {%>
+                        <h2 class="error-alert">Pedido não encontrado!</h2>
+                        <% } %>
+            </section>
+        </main>
+        <%- include("./partials/footer-adm")%>

@@ -1,89 +1,67 @@
-<%- include("./partials/head") %>
-    <%- include("./partials/header") %>
-        <main class="container-main">
-            <div class="container-principal-PanelUser">
-                <div class="container-PanelUser">
-                    <section class="section-side">
-                        <% if (locals.user) {%>
-                            <div class="user">
-                                <img src="<%= user.avatar %>" alt="">
+<%- include("./partials/head") %> <%- include("./partials/header") %>
+<main class="container-main">
+  <div class="container-principal-PanelUser">
+    <div class="container-PanelUser">
+      <section class="section-side">
+        <% if (locals.user) {%>
+        <div class="user">
+          <img src="<%= user.image %>" alt="" />
 
-                                <h4>
-                                    Olá - <%= locals.user.nome %>
-                                </h4>
+          <h4>Olá - <%= locals.user.name %></h4>
+        </div>
+        <div class="btn-userPanel">
+          <a href="/user/edit/<%= locals.user.id %>"
+            ><button type="button">Editar perfil</button></a
+          >
+        </div>
+        <div class="creditos">
+          <ul>
+            <h3>Créditos</h3>
+            <li><span>Total</span><span>R$ 0,00</span></li>
+          </ul>
+        </div>
 
-                            </div>
-                            <div class="btn-userPanel">
-                                <a href="/user/edit/<%= locals.user.id %>"><button type="button">Editar
-                                        perfil</button></a>
-                            </div>
-                            <div class="creditos">
-                                <ul>
-                                    <h3>Créditos</h3>
-                                    <li><span>Total</span><span>R$ 0,00</span></li>
-                                </ul>
-                            </div>
+        <% }%>
+      </section>
 
-                            <% }%>
-                    </section>
+      <section class="purchases-made">
+        <div class="title-purchase">
+          <h3>Compras Realizadas</h3>
+        </div>
 
-                    <section class="purchases-made">
-                        <div class="title-purchase">
-                            <h3>Compras Realizadas</h3>
-                        </div>
+        <% for (let order of listOrders) { %> <% for (let product of
+        order.Products) { %>
 
-                        <div class="container-purchases">
-
-                            <div class="purchase">
-                                <img src="../../img/9.png" alt="">
-                                <div class="name-purchase">
-                                    <h3>
-                                        Colônia Granado
-                                    </h3>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="container-purchases">
-
-                            <div class="purchase">
-                                <img src="../../img/9.png" alt="">
-                                <div class="name-purchase">
-                                    <h3>
-                                        Colônia Granado
-                                    </h3>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="container-purchases">
-
-                            <div class="purchase">
-                                <img src="../../img/9.png" alt="">
-                                <div class="name-purchase">
-                                    <h3>
-                                        Colônia Granado
-                                    </h3>
-                                </div>
-                            </div>
-
-                        </div>
-                    </section>
-
-                </div>
-
-
-
-
-                <div class="atendimento-cliente">
-                    <h4>Atendimento ao cliente</h4>
-                    <h5>Central SAC: (19) 2124 4444</h5>
-                    <h5>E-mail: faleconosco@prefuma.com.br</h5>
-                    <a href="#">Atendimento via chat</a>
-                </div>
-
+        <div class="container-purchases">
+          <div class="purchase">
+            <div class="name-purchase">
+              <h4>Produto</h4>
+              <h3><%= product.name%></h3>
             </div>
-        </main>
-        <%- include("./partials/footer") %>
+            <div class="name-purchase">
+              <h4>Data do pedido</h4>
+              <h3>
+                <%= `${order.created_at.getDate()} /
+                ${order.created_at.getMonth() + 1} /
+                ${order.created_at.getFullYear()}` %>
+              </h3>
+            </div>
+            <div class="name-purchase">
+              <h4>Status do pedido</h4>
+              <h3><%= order.status %></h3>
+            </div>
+          </div>
+        </div>
+        <% } %> <% } %>
+      </section>
+    </div>
+
+    <div class="atendimento-cliente">
+      <h4>Atendimento ao cliente</h4>
+      <h5>Central SAC: (19) 2124 4444</h5>
+      <h5>E-mail: faleconosco@prefuma.com.br</h5>
+      <a href="#">Atendimento via chat</a>
+    </div>
+  </div>
+</main>
+<%- include("./partials/footer") %>

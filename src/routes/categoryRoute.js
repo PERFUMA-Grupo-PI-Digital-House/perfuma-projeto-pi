@@ -18,6 +18,7 @@ router.get("/delete/:id",isAuth, categoryController.delete);
 router.delete("/delete/:id",isAuth, categoryController.destroy);
 
 router.get('/',isAuth, categoryController.index);
+router.get('/:id/product',isAuth, categoryController.show);
 
 
 module.exports = router;

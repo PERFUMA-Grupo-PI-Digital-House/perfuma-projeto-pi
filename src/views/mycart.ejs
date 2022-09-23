@@ -1,0 +1,32 @@
+<%- include("./partials/head") %> <%- include("./partials/header") %>
+<main class="container-main">
+  <div class="container-product">
+    <div>
+      <h2 id="cart-list">Carrinho</h2>
+    </div>
+    <div class="view">
+      <div class="itens">
+        <input class="item--id" name="carrinho" type="text" />
+        <input class="user--id" name="userId" type="text" />
+        <div class="area-name-desc">
+          <div class="item--name"></div>
+          <div class="item--desc"></div>
+        </div>
+        <div class="area-price-button">
+          <div class="item--price"></div>
+          <button onclick="removeItemCar(event)">Remover</button>
+        </div>
+      </div>
+    </div>
+    <form action="/order/create" method="post" class="form-mycart">
+      <div class="view-cart"></div>
+      <div class="purchase-total">
+        <h4>Total: </h4>
+        <h4 class="total"></h4>
+      </div>
+      <button type="submit">Comprar</button>
+    </form>
+  </div>
+</main>
+
+<%- include("./partials/footer") %>

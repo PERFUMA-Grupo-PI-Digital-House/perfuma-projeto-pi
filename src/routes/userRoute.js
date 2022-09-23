@@ -17,7 +17,7 @@ router.post("/create", isAuth, upload.single('avatar'), validator, userControlle
 
 // Editar usuário
 router.get("/edit/:id",isAuth, userController.edit);
-router.put("/edit/:id",isAuth, userController.update);
+router.put("/edit/:id",isAuth, upload.single('avatar'), userController.update);
 
 // Deletar usuário
 router.get("/delete/:id",isAuth, userController.delete);
@@ -25,6 +25,9 @@ router.delete("/delete/:id",isAuth, userController.destroy);
 
 // Rota para página perfil do usuário
 router.get("/profile", isAuth, userController.profile);
+
+// Rota para pesquisa de usuário
+router.get("/search", isAuth, userController.search);
 
 // Visualizar usuário
 router.get("/",isAuth, userController.index);

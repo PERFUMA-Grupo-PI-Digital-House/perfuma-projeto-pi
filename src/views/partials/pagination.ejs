@@ -1,0 +1,24 @@
+<div class="container-nav-pages">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center pagination-lg">
+      <!-- <li class="page-item" onclick="prevPagination(this)">
+        <a class="page-link" href="#" aria-label="Anterior">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Anterior</span>
+        </a>
+      </li> -->
+      <% for (let nrPage=1; nrPage <=totalPage; nrPage++) {%>
+        <li class="page-item"><a class="page-link" href="?page=<%=nrPage%>">
+            <%=nrPage%>
+          </a></li>
+        <% } %>
+          <!-- <li class="page-item" onclick="nextPagination(this)">
+            <a class="page-link" href="#" aria-label="Próximo">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Próximo</span>
+            </a>
+          </li> -->
+
+    </ul>
+  </nav>
+</div>

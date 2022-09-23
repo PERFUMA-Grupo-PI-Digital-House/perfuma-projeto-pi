@@ -1,74 +1,112 @@
-<%- include("./partials/head") %>
-    <%- include("./partials/header-adm") %>
-        <div class="way">
-            <h5><a href="/product/">Produto</a></h5>
-            <h5> - Cadastrar produto</h5>
+<%- include("./partials/head") %> <%- include("./partials/header-adm") %>
+<div class="way">
+  <h5><a href="/product/">Produto</a></h5>
+  <h5>- Cadastrar produto</h5>
+</div>
+
+<main class="container-main">
+  <section id="container-form">
+    <h2>Cadastrar produto</h2>
+
+    <form action="/product/create" method="post" enctype="multipart/form-data">
+      <label for="nome">Nome do produto</label>
+      <input
+        type="text"
+        name="nome"
+        value="<%= locals.old ? old.nome : null %>"
+      />
+      <% if(locals.errors && errors.nome){ %>
+      <div class="error-alert"><%= errors.nome.msg %></div>
+      <% } %>
+
+      <label for="descricao">Descrição do produto</label>
+      <input
+        type="text"
+        name="descricao"
+        value="<%= locals.old ? old.descricao : null %>"
+      />
+      <% if(locals.errors && errors.descricao){ %>
+      <div class="error-alert"><%= errors.descricao.msg %></div>
+      <% } %>
+
+      <div class="container-preco-categoria">
+        <div class="preco-categoria">
+          <label for="preco">Preço</label>
+          <input
+            type="text"
+            onkeyup="precoMask()"
+            name="preco"
+            data-js="money"
+            value="<%= locals.old ? old.preco : null %>"
+            class="money"
+          />
+          <% if(locals.errors && errors.preco){ %>
+          <div class="error-alert"><%= errors.preco.msg %></div>
+          <% } %>
         </div>
 
-        <main class="container-main">
+        <div class="preco-categoria">
+          <label for="categoria">Categoria</label>
+          <input
+            type="text"
+            name="categoria"
+            id=""
+            onfocus="dropdown(0)"
+            onblur="dropdown(1)"
+            value="<%= locals.old ? old.categoria : null %>"
+          />
+          <div class="dropDown">
+            <div class="listDropDown">
+              <div class="item" id="item-1" onmousedown="category(1)">Linha Masculina</div>
+              <div class="item" id="item-2" onmousedown="category(2)">Linha Feminina</div>
+              <div class="item" id="item-3" onmousedown="category(3)">Linha Infaltil</div>
+            </div>
+          </div>
+          <% if(locals.errors && errors.categoria){ %>
+          <div class="error-alert"><%= errors.categoria.msg %></div>
+          <% } %>
+        </div>
 
-            <section id="container-form">
+        <div class="preco-categoria">
+          <label for="quantidade">Quantidade</label>
+          <input
+            type="text"
+            onkeyup="quantMask()"
+            name="quantidade"
+            value="<%= locals.old ? old.quantidade : null %>"
+            class="quant"
+          />
+          <% if(locals.errors && errors.quantidade){ %>
+          <div class="error-alert"><%= errors.quantidade.msg %></div>
+          <% } %>
+        </div>
+      </div>
 
-                <h2>Cadastrar produto</h2>
-                <form action="/product/create" method="post" enctype="multipart/form-data">
+      <label for="imageProduct">Imagem do produto</label>
+      <input
+        type="file"
+        name="imageProduct"
+        value="<%= locals.old ? old.imageProduct : null %>"
+      />
+      <% if(locals.errors && errors.imageProduct){ %>
+      <div class="error-alert"><%= errors.imageProduct.msg %></div>
+      <% } %>
+      <button type="submit" id="open-modal">Salvar</button>
+    </form>
 
-                    <label for="nome">Nome do produto</label>
-                    <input type="text" name="nome" value="<%= locals.old ? old.nome : null %> " />
-                    <% if(locals.errors && errors.nome){ %>
-                        <div class="error-alert">
-                            <%= errors.nome.msg %>
-                        </div>
-                        <% } %>
+    <!-- Modal -->
+    <div id="fade" class="hide"></div>
+    <div id="modal" class="hide">
+        <div class="modal-header">
+            <h3>Produto cadastrado com sucesso!</h3>
+        </div>
+        <!-- <div class="modal-body">...</div> -->
+        <div class="modal-footer">
+            <button id="close-modal">Fechar</button>
+        </div>
 
-                            <label for="descricao">Descrição do produto</label>
-                            <input type="text" name="descricao" value="<%= locals.old ? old.descricao : null %> " />
-                            <% if(locals.errors && errors.descricao){ %>
-                                <div class="error-alert">
-                                    <%= errors.descricao.msg %>
-                                </div>
-                                <% } %>
+    </div>
+  </section>
+</main>
 
-                                    <div class="container-preco-categoria">
-                                        <div class="preco-categoria">
-
-                                            <label for="preco">Preço do produto</label>
-                                            <input type="text" name="preco" data-js="money"
-                                                value="<%= locals.old ? old.preco : null %> " class="money" />
-                                            <% if(locals.errors && errors.preco){ %>
-                                                <div class="error-alert">
-                                                    <%= errors.preco.msg %>
-                                                </div>
-                                                <% } %>
-
-                                        </div>
-
-                                        <div class="preco-categoria">
-                                            <label for="categoria">Categoria</label>
-                                            <input type="text" name="categoria" id="" onfocus="dropdown(0)"
-                                                onblur="dropdown(1)">
-                                            <div class="dropDown">
-                                                <div class="listDropDown">
-                                                    <div class="item" id="item-1" onmousedown="category(1)">Linha Masculina</div>
-                                                    <div class="item" id="item-2" onmousedown="category(2)">Linha Feminina</div>
-                                                    <div class="item" id="item-3" onmousedown="category(3)">Linha Infaltil</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <label for="imageProduct">Imagem do produto</label>
-                                    <input type="file" name="imageProduct"
-                                        value="<%= locals.old ? old.imageProduct : null %>" />
-                                    <% if(locals.errors && errors.imageProduct){ %>
-                                        <div class="error-alert">
-                                            <%= errors.imageProduct.msg %>
-                                        </div>
-                                        <% } %>
-                                            <button type="submit">Salvar</button>
-                </form>
-            </section>
-        </main>
-
-
-        <%- include("./partials/footer-adm") %>
+<%- include("./partials/footer-adm") %>

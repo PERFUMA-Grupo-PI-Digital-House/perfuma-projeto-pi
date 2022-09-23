@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 // Importa o express e atribui a variável
 const express = require('express');
 
@@ -25,6 +27,9 @@ const categoryRoute = require('./src/routes/categoryRoute');
 const orderRoute = require('./src/routes/orderRoute');
 const authRoute = require('./src/routes/authRoute');
 
+// Metodo utilizado para sobrescrever com PUT/DELETE o methode GET/POST no formulário
+app.use(methodOverride('_method'));
+
 // Configuração para acessar externamente conteúdo de uma pasta
 app.use(express.static(__dirname + "/public"));
 
@@ -33,7 +38,7 @@ app.set('view engine', 'ejs');
 
 // Configurando a frase para criptografia e mudar algumas configurações como essas informações seram salvas
 app.use(session({
-    secret: "projetoExpress",
+    secret: process.env.SECRET_KEY,
     resave: true,
     saveUninitialized: true,
 }));
@@ -54,8 +59,6 @@ app.use((req, res, next) => {
 // Pegar o conteúdo do body das requisições e deixar organizado pra gente trabalhar mais fácil esses dados
 app.use(express.urlencoded({ extended: false }));
 
-// Metodo utilizado para sobrescrever com PUT/DELETE o methode GET/POST no formulário
-app.use(methodOverride('_method'));
 
 //localhost:3000/administrator/
 app.use('/administrator', administratorRoute);

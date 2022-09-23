@@ -5,10 +5,10 @@ const router = express.Router();
 const authController = require('../controllers/AuthController');
 
 // Middlewares
+const upload = require('../middlewares/multer');
 const validator = require('../middlewares/validatorRegisterMiddleware');
 const isAuth = require('../middlewares/auth');
 const isGuest = require("../middlewares/guest");
-const upload = require('../middlewares/multer');
 
 
 // Rota para página login

@@ -7,21 +7,28 @@
 
         <main class="container-main">
             <section id="container-form">
-                <h2>Atualizar produto</h2>
                 <% if(locals.error){ %>
                     <h2 class="error-alert">
                         <%= error.message %>
                     </h2>
                     <% } %>
-                        <form action="/product/edit/<%= product.id %>?_method=put" method="post">
+
+                        <div class="success-alert">
+                            <%= locals.message %>
+                        </div>
+                        <form action="/product/edit/<%= product.id %>?_method=put" method="post" enctype="multipart/form-data">
                             <label for="nome">Nome:</label>
-                            <input value="<%= product.nome %>" type="text" name="nome" />
+                            <input value="<%= product.name %>" type="text" name="nome" />
                             <label for="nome">Descrição:</label>
-                            <input value="<%= product.descricao %>" type="text" name="descricao" />
+                            <input value="<%= product.description %>" type="text" name="descricao" />
                             <label for="nome">Preço:</label>
-                            <input value="<%= product.preco %>" type="number" name="preco" />
+                            <input value="<%= product.price.replace('.', ',') %>" onkeyup="precoMask()" class="money" type="text" name="preco" />
+                            <label for="categoria">Categoria:</label>
+                            <input value="<%= product.category_id %>" type="text" name="categoria" />
+                            <label for="categoria">Quantidade:</label>
+                            <input value="<%= product.quantity %>" type="text" name="quantidade" />
                             <label for="productImage">Imagem do produto:</label>
-                            <input value="<%= product.productImage %> " type="file" name="productImage" />
+                            <input value="<%= product.Image.image %>" type="file" name="productImage" />
 
                             <button type="submit">Atualizar</button>
                         </form>
