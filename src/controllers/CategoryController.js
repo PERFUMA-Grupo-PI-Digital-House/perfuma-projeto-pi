@@ -1,4 +1,6 @@
 const { validationResult } = require("express-validator");
+const files = require("../helpers/files");
+const upload = require("../config/upload");
 
 const Category = require("../models/Category");
 const Product = require("../models/Product");
@@ -8,15 +10,20 @@ const categoryController = {
   index: async (req, res) => {
     try {
       const { page = 1 } = req.query;
-      const { count: total, rows: categorys } = await Category.findAndCountAll({
+      const { count: total } = await Category.findAndCountAll({
+        where: {
+          is_active: 1,
+        }
+      });
+      const categorys  = await Category.findAll({
         attributes: ["id", "name", "description", "is_active"],
         where: {
           is_active: 1,
         },
-        // include: {
-        //   model: Product,
-        //   required: true,
-        // },
+        include: {
+          model: Product,
+          required: true,
+        },
         limit: 6,
         offset: (page - 1) * 6,
         order: [["name", "ASC"]],
@@ -79,9 +86,9 @@ const categoryController = {
       });
       
       products.map(product => {
-        console.log(product.Image.image);
-        //   product.Image.image = files.base64Encode(upload.path + product.Image.image);
-      });
+        console.log(product.Image);
+          product.Image.image = files.base64Encode(upload.path + product.Image.image);
+      })
 
       
       return res.render("products-category", {

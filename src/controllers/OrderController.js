@@ -10,7 +10,12 @@ const orderController = {
 
     try {
       const { page = 1 } = req.query;
-      const { count: total, rows: orders } = await Order.findAndCountAll({
+      const { count: total } = await Order.findAndCountAll({
+        where: {
+          is_active: 1,
+        },
+      });
+      const orders = await Order.findAll({
         attributes: ["id", "status", "is_active", "created_at"],
         where: {
           is_active: 1,

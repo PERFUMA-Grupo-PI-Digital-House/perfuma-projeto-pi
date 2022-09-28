@@ -254,8 +254,12 @@ getShortMonthName = function (date) {
 };
 
 var data = new Date();
-var dia = String(data.getDate() + 8).padStart(2, "0");
-var diaTwo = String(data.getDate() + 10).padStart(2, "0");
+var dayOne = new Date();
+dayOne.setDate(dayOne.getDate() + 8);
+var dayTwo = new Date();
+dayTwo.setDate(dayTwo.getDate() + 11);
+// var dia = String(data.getDate() + 8).padStart(2, "0");
+// var diaTwo = String(data.getDate() + 10).padStart(2, "0");
 // var mes = String(data.getMonth() + 1).padStart(2, '0');
 // var mes = String(data.getMonth() + 1);
 // var ano = data.getFullYear();
@@ -264,7 +268,7 @@ var diaTwo = String(data.getDate() + 10).padStart(2, "0");
 if (document.querySelector(".date-delivery")) {
   document.querySelector(
     ".date-delivery"
-  ).innerHTML = `${dia} e ${diaTwo} de ${getLongMonthName(new Date())}`;
+    ).innerHTML = `${dayOne.getDate()} e ${dayTwo.getDate()} de ${getLongMonthName(dayTwo)}`;
 }
 
 // Carrinho
