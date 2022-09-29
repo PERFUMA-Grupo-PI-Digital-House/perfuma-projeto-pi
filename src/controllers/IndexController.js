@@ -61,6 +61,7 @@ const indexController = {
         user: req.cookies.user,
       });
     } catch (error) {
+
       if (error.message === "PRODUCT_NOT_FOUND") {
         res.render("index", {
           title: "Perfuma",

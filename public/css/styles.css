@@ -931,7 +931,7 @@ nav.navbar-transparente {
 .btn-finish a button[type="button"] {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   border-radius: 10px;
   cursor: pointer;
@@ -1475,6 +1475,8 @@ form.form-payment-product a {
   text-align: left;
   width: 100%;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
 }
 
 form.form-payment-product .inputs-vencimento {
@@ -2066,3 +2068,164 @@ form button[type="submit"]:hover,
     width: 60%;
   }
 }
+
+
+/* -------------------------------------------------------------------------------------------------- */
+/* 
+Pagina Final de Pagamento Pix */
+
+.container-main-pix {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.container-form-pix {
+  height: 600px;
+  width: 1200px;
+}
+
+.container-1-logo-pix {
+  padding-top: 10px;
+  padding-left: 25px;
+}
+
+.container-3-pix h4 {
+  display: flex;
+  justify-content: center;
+  background-color: darkgray;
+  padding-top: 4px;
+  margin-top: 10px;
+  align-items: center;
+  font-weight: bold;
+  font-size: 15px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.container-4 {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.container-4-esquerdo {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.container-4-esquerdo input {
+  display: flex;
+  width: 300px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.copia-cola {
+  margin-top: 15px;
+  background-color: green;
+  border: 0px;
+}
+
+.container-4-direito {
+  padding: 30px;
+  text-align: center;
+}
+
+.container-5 p {
+  width: 470px;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(248, 153, 85);
+  border-radius: 5px;
+  color: black;
+}
+
+.container-5-paginainicial{
+  display: flex;
+  justify-content: center;
+}
+
+.copia-cola {
+  width: 300px;
+  height: 30px;
+  font-weight: bolder;
+  color: white;
+  cursor: pointer;
+}
+
+.copia-cola[type="button"]:hover {
+  background-color: rgba(68, 255, 61, 0.4);
+}
+
+.container-5 div a button {
+  background-color: yellow;
+  padding: 5px;
+  width: 200px;
+  border: 0px;
+  border-radius: 10px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.container-5 div a button[type="button"]:hover {
+  background-color: rgb(255, 215, 0, 0.4);
+}
+
+
+
+/* Sobre nos */
+
+*
+{border-bottom-width: thin;}
+
+.container-sobrenos{
+
+
+	width: 100rem;
+	display:inline-flex;
+	justify-content:first baseline;
+	align-items:flex-start;
+	flex-wrap:inherit;
+	padding: 35px;
+	margin-top: 2%;
+  border-image-slice:initial;
+  font-size:medium;
+
+}
+
+.container .card-sobrenos{
+	width: 100rem;;
+	position: relative;
+	height: 50rem;
+	background: #f0f0f0;
+	margin:30px 10px;
+	padding: 20px 15px;
+	display:flex;
+	flex-direction:inherit;
+	box-shadow: 0.20px 10px #e6e6e6;
+	margin-top: 3%;
+  font-size:10%;
+
+}
+.imgBx-sobrenos{
+	float: right;
+  width: 100%;
+  text-align:justify;
+  font-style:normal;
+  font-size: smallr;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+  background-color: rgba(206, 58, 204, 0.353);
+}
+
+.h2{
+  font: size 70%;
+  font-family: Arial;
+  text-align:center ;
+}
+
+

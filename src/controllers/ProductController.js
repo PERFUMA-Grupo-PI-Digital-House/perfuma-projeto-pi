@@ -540,6 +540,7 @@ const productController = {
           title: "Produtos",
           errors: { message: "Erro ao encontrar os produtos" },
         });
+        
       }
     }
   },

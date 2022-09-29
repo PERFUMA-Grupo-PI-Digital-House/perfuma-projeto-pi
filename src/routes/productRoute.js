@@ -28,6 +28,7 @@ router.get("/:id/description", productControlller.viewProduct);
 
 router.get("/search", isAuth, productControlller.search);
 
+
 router.get("/", isAuth, productControlller.index);
 router.get("/:id", isAuth, productControlller.show);
 

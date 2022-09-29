@@ -301,6 +301,14 @@ const orderController = {
       user: req.cookies.user,
     });
   },
+
+  viewFinishPixPayment: (req, res) => {
+    res.render("finished-product-payment-pix", { 
+      title: "Compra finalizada Pix",
+      user: req.cookies.user,
+    });
+  },
+
 };
 
 module.exports = orderController;

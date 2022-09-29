@@ -1,14 +1,10 @@
 <%- include("./partials/head") %>
     <%- include("./partials/header") %>
 
-
     <main class="container-main-pix">
         <div class="container-form-pix">
             <div class="container-1-logo-pix">
                 <img src="../../img/Logo Pix.png" alt="Logo Pix" height="40px">
-            </div>
-            <div class="container-2-valor-pix">
-                <h4>Valor a Pagar R$XXX,XX</h4>
             </div>
             <div class="container-3-pix">
                 <h4><strong>Escolha uma Forma de Pagamento</strong></h4>
@@ -16,8 +12,15 @@
             <div class="container-4">
                 <div class="container-4-esquerdo">
                     <p>Idenficando sua tranferencia com  um <br> idencificador único</p>
-                    <input id="name" type="text" name="text" placeholder="" >
-                    <button class="copia-cola" type="button">Copia e Cola</button>
+                    <input type="text" id="texto" value="00020126330014br.gov.bcb.pix0111479199678055204000053039865802BR5925Gabriel Oliveira Ferreira6009Sao Paulo62070503***63044FA6" >
+                    <button id="botao" class="copia-cola">Copia e Cola</button>
+
+                    <script type="text/javascript">
+                        document.getElementById("botao").addEventListener("click", function() {
+                        document.getElementById("texto").select();
+                        document.execCommand('copy');
+                        });
+                    </script>
                     <p><strong>Instruções de Pagamento com ID:</strong></p>
                     <ul>
                         <li>1. Use o ID da transação</li>
@@ -30,15 +33,11 @@
                 </div>
             </div>
             <div class="container-5">
-                <div class="container-5-lembrete"><p>Lembre-se que seu pagamento PIX expira em XX/XX/XXXX</p></div>
                 <div class="container-5-paginainicial"><a href="/"><button type="button" >Pagina inicial</button></a></div>
             </div>
-        </div>
-        
+            </div>
+        </div>       
     </main>
-
-
-    
         <%- include("./partials/footer") %>
 
 
