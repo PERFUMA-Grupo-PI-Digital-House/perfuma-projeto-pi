@@ -35,7 +35,13 @@ Site desenvolvido para a conclusão do curso Web Full Stack da Digital House
 - ``JavaScript``
 - ``express``
 - ``Git/GitHub``
+- ``MySql``
+- ``Sequelize``
+- ``express``
 - ``MVC``
+- ``express-validator``
+- ``bcrypt``
+- ``multer``
 
 ## ✔️ Técnica de deenvolvimento
 
