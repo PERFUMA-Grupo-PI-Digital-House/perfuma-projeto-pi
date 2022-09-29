@@ -35,6 +35,7 @@ const indexController = {
           },
         ],
       });
+     console.log(products)
 
       if (!products) {
         throw Error("PRODUCT_NOT_FOUND");
@@ -61,6 +62,7 @@ const indexController = {
         user: req.cookies.user,
       });
     } catch (error) {
+      console.log("error acontecendo", error)
       if (error.message === "PRODUCT_NOT_FOUND") {
         res.render("index", {
           title: "Perfuma",

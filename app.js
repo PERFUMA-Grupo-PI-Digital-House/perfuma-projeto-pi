@@ -26,6 +26,9 @@ const userRoute = require('./src/routes/userRoute');
 const categoryRoute = require('./src/routes/categoryRoute');
 const orderRoute = require('./src/routes/orderRoute');
 const authRoute = require('./src/routes/authRoute');
+const sobreNosRoute = require('./src/routes/sobreNosRoute');
+
+
 
 // Metodo utilizado para sobrescrever com PUT/DELETE o methode GET/POST no formulário
 app.use(methodOverride('_method'));
@@ -38,7 +41,7 @@ app.set('view engine', 'ejs');
 
 // Configurando a frase para criptografia e mudar algumas configurações como essas informações seram salvas
 app.use(session({
-    secret: process.env.SECRET_KEY,
+    secret: 'secretidhere',
     resave: true,
     saveUninitialized: true,
 }));
@@ -74,6 +77,8 @@ app.use('/order', orderRoute);
 app.use('/', authRoute);
 //localhost:3000/
 app.use('/', indexRoute);
+
+app.use('/sobrenos', sobreNosRoute);
 
 // Rota de erros 404
 app.use((req, res, next) => {
