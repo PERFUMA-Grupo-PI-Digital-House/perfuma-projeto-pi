@@ -215,7 +215,7 @@ const productController = {
         category_id: resultCategoria,
         image_id: parseInt(image.id),
       });
-      return res.redirect("products");
+      return res.redirect("/product");
     } catch (error) {
       res.render("product-create", {
         title: "Erro",
@@ -323,12 +323,8 @@ const productController = {
         throw Error("PRODUCT_NOT_FOUND");
       }
 
-      res.render("product-edit", {
-        title: "Sucesso",
-        message: `Produto foi atualizado com sucesso!`,
-        user: req.cookies.user,
-        product,
-      });
+      return res.redirect("/product");
+
     } catch (error) {
       if (error.message === "PRODUCT_NOT_FOUND") {
         res.render("product-edit", {
@@ -362,6 +358,16 @@ const productController = {
         where: {
           id,
         },
+        include: [
+          {
+            model: Category,
+            required: true,
+          },
+          {
+            model: Image,
+            required: true,
+          },
+        ],
       });
 
       if (!product) {
@@ -404,10 +410,8 @@ const productController = {
         }
       );
 
-      return res.render("product-delete", {
-        title: "Produto deletado",
-        message: "Produto deletado com sucesso!",
-      });
+      return res.redirect("/product");
+
     } catch (error) {
       res.render("product-delete", {
         title: "Produto",
